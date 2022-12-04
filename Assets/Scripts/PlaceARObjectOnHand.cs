@@ -27,8 +27,8 @@ public class PlaceARObjectOnHand : MonoBehaviour
     private void PlaceObjectOnHand(Vector3 handPosition)
     {
         float distance = Vector3.Distance(handPosition, arObject.transform.position);
-        arObject.transform.position =
-            Vector3.MoveTowards(arObject.transform.position, handPosition, speedMovement * Time.deltaTime);
+        arObject.transform.position = handPosition;
+            //Vector3.MoveTowards(arObject.transform.position, handPosition, speedMovement * Time.deltaTime);
         if (distance >= MiNDistance)
         {
             arObject.transform.LookAt(handPosition);
