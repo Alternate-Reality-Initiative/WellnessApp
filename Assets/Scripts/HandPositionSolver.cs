@@ -10,7 +10,7 @@ public class HandPositionSolver : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private ARHandTrackingManager handTrackingManager;
     [SerializeField] private Camera arCamera;
-    [SerializeField] private float minHandConf = 0.85f;
+    [SerializeField] private float minHandConf = 0.55f;
 
     private Vector3 handPosition;
     public Vector3 HandPosition
