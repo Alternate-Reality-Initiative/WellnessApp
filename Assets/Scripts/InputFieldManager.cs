@@ -8,7 +8,7 @@ using TMPro;
 public class InputFieldManager : MonoBehaviour
 {
     public TMP_InputField name;
-    string saveName;
+    public string saveName;
     // Start is called before the first frame update
     void Start()
     {

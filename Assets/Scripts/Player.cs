@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : InputFieldManager
 {
-    // Start is called before the first frame update
-    public string name = ReturnName();
+    public string name;
     void SavePlayer()
     {
+        name = InputFieldManager.saveName;
         SaveSystem.SavePlayer(this);
     }
 
-    // Update is called once per frame
-    void LoadPlayer()
+    public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
     }
