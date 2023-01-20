@@ -1,0 +1,8 @@
+[14:19:23.642528 -05:00] [---E---] [telemetry_actor.cpp] [thread 1779950] Telemetry request failed with HTTP error 500: [Server error], but ignore it now
+[14:21:19.670662 -05:00] [---E---] [telemetry_actor.cpp] [thread 1779950] Telemetry request failed with HTTP error 500: [Server error], but ignore it now
+[14:22:09.551803 -05:00] [---E---] [telemetry_actor.cpp] [thread 1779950] Telemetry request failed with HTTP error 500: [Server error], but ignore it now
+[14:25:23.731139 -05:00] [---E---] [telemetry_actor.cpp] [thread 1779950] Telemetry request failed with HTTP error 500: [Server error], but ignore it now
+[13:26:59.208054 -05:00] [---E---] [telemetry_actor.cpp] [thread 4515281] Telemetry request failed with HTTP error 500: [Server error], but ignore it now
+[13:59:55.302467 -05:00] [---E---] [telemetry_actor.cpp] [thread 4515281] Telemetry request failed with HTTP error 500: [Server error], but ignore it now
+[14:01:33.284478 -05:00] [---E---] [telemetry_actor.cpp] [thread 4515281] Telemetry request failed with HTTP error 500: [Server error], but ignore it now
+[14:24:26.857906 -05:00] [---E---] [telemetry_actor.cpp] [thread 4515281] Telemetry request failed with HTTP error 500: [Server error], but ignore it now
