@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : InputFieldManager
+public class Player : MonoBehaviour
 {
     public string name;
-    void SavePlayer()
+    public void SavePlayer()
     {
-        name = InputFieldManager.saveName;
+        //name = InputFieldManager.saveName;
         SaveSystem.SavePlayer(this);
     }
 
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
+        name = data.name;
     }
 }

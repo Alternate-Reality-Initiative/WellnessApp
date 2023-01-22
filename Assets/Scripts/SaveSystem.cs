@@ -10,8 +10,10 @@ public static class SaveSystem
     public static void SavePlayer (Player player){
         BinaryFormatter formatter = new BinaryFormatter();
 
-        string path = Path.Combine(Application.persistentDataPath, "/player.fun");
+        string path = Path.Combine(Application.persistentDataPath, "player.wow");
+        Debug.Log(path);
         FileStream stream = new FileStream(path, FileMode.Create);
+        Debug.Log(path);
         PlayerData data = new PlayerData(player);
 
         formatter.Serialize(stream, data);
@@ -20,7 +22,7 @@ public static class SaveSystem
 
     public static PlayerData LoadPlayer (){
 
-        string path = Path.Combine(Application.persistentDataPath, "/player.fun");
+        string path = Path.Combine(Application.persistentDataPath, "player.wow");
         if(File.Exists(path)){
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
