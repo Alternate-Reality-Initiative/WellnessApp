@@ -8,7 +8,7 @@ namespace Niantic.ARDK.Configuration.Authentication
   {
     [SerializeField]
     [Tooltip("Obtain an API key from your Lightship Account Dashboard and copy it in here.")]
-    private string _apiKey = "";
+    private string _apiKey = "YqNaOmbEY9PVmHTx2fmY";
 
     public string ApiKey {
       get
