@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 
 public class InputFieldManager : MonoBehaviour
@@ -11,27 +12,44 @@ public class InputFieldManager : MonoBehaviour
     public TextMeshProUGUI water;
     //public static string saveName;
     public Player player;
-    // Start is called before the first frame update
+
+    private IEnumerator coroutine;
+
     void Start()
     {
         //string text = inputField.GetComponent<TMP_InputField>().text;
         //name.text = PlayerData.name;
-        player.LoadPlayer();
-        name.text = player.name;
-        water.text = player.waterLevel.ToString();
+        string path = Path.Combine(Application.persistentDataPath, "player.wow");
+        if (File.Exists(path))
+        {
+            player.LoadPlayer();
+            name.text = player.name;
+            water.text = player.waterLevel.ToString();
+        }
+
+        coroutine = UpdateWater();
+        StartCoroutine(coroutine);
     }
 
     public void GetName(){
         //saveName = name.text;
+        Debug.Log("hi");
         player.name = name.text;
+        Debug.Log(water.text);
         player.waterLevel = int.Parse(water.text);
+        
         player.SavePlayer();
-        //Debug.Log("hi");
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator UpdateWater()
     {
-        
+        while (true)
+        {
+            player.waterLevel = int.Parse(water.text);
+            yield return new WaitForSeconds(1f);
+            player.waterLevel--;
+
+            water.text = player.waterLevel.ToString();
+        }
     }
 }
