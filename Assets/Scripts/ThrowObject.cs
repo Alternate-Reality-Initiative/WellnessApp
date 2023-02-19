@@ -1,6 +1,7 @@
 //Standard Unity/C# functionality
 using UnityEngine;
 using System;
+using System.Collections;
 
 //These tell our project to use pieces from the Lightship ARDK
 using Niantic.ARDK.AR;
@@ -8,19 +9,30 @@ using Niantic.ARDK.AR.ARSessionEventArgs;
 using Niantic.ARDK.Utilities;
 using Niantic.ARDK.Utilities.Input.Legacy;
 
+using TMPro;
+
 //Define our main class
 public class ThrowObject : MonoBehaviour
 {
+    
+    [SerializeField] 
+
     //Variables we'll need to reference other objects in our game
     public GameObject _objectPrefab;  //This will store the Object Prefab we created earlier, so we can spawn a new Object whenever we want
     public Camera _mainCamera;  //This will reference the MainCamera in the scene, so the ARDK can leverage the device camera
     IARSession _ARsession;  //An ARDK ARSession is the main piece that manages the AR experience
+    public TMP_Text _waterCounter; //Need to get the amount of water from saved data
+    public int waterCount;
 
     // Start is called before the first frame update
     void Start()
     {
         //ARSessionFactory helps create our AR Session. Here, we're telling our 'ARSessionFactory' to listen to when a new ARSession is created, then call an 'OnSessionInitialized' function when we get notified of one being created
         ARSessionFactory.SessionInitialized += OnSessionInitialized;
+
+        waterCount = 10;
+        _waterCounter.text = waterCount.ToString();
+
     }
 
 /*
@@ -55,20 +67,30 @@ public class ThrowObject : MonoBehaviour
     //This function will be called when the player touches the screen. For us, we'll have this trigger the shooting of our object from where we touch.
     public void ClickButton()
     {
-        System.Random rnd = new System.Random();
-        var radius = .2;
+        if (waterCount > 0) {
+            System.Random rnd = new System.Random();
+            var radius = .2;
 
-        for(int i = 0; i < 5; i++){
-            double angle = rnd.NextDouble() * (2 * Math.PI);
+            for(int i = 0; i < 5; i++){
+                double angle = rnd.NextDouble() * (2 * Math.PI);
 
-            GameObject newObject = Instantiate(_objectPrefab);  //Spawn a new object from our Ball Prefab
-            newObject.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new object
-            newObject.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;    //Set the position of our new object to just in front of our Main Camera
-            newObject.transform.Translate((float)(radius * Math.Cos(angle)), (float)(radius * Math.Sin(angle)), 0);
-            Rigidbody rigbod = newObject.GetComponent<Rigidbody>();
-            rigbod.velocity = new Vector3(0f, 0f, 0f);
-            float force = 300.0f;
-            rigbod.AddForce(_mainCamera.transform.forward * force); 
+                GameObject newObject = Instantiate(_objectPrefab);  //Spawn a new object from our Ball Prefab
+                newObject.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new object
+                newObject.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;    //Set the position of our new object to just in front of our Main Camera
+                newObject.transform.Translate((float)(radius * Math.Cos(angle)), (float)(radius * Math.Sin(angle)), 0);
+                Rigidbody rigbod = newObject.GetComponent<Rigidbody>();
+                rigbod.velocity = new Vector3(0f, 0f, 0f);
+                float force = 300.0f;
+                rigbod.AddForce(_mainCamera.transform.forward * force);
+                StartCoroutine(Evaporate(newObject));
+            }
+
+            waterCount--;
+            _waterCounter.text = waterCount.ToString();
         }
+    }
+    IEnumerator Evaporate(GameObject droplet){
+        yield return new WaitForSeconds(2f);
+        Destroy(droplet);
     }
 }
