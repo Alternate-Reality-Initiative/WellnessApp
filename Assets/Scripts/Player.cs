@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public string name;
     public int waterLevel = 1;
 
+    public static Player Instance; 
+
     public void SavePlayer()
     {
         //name = InputFieldManager.saveName;
