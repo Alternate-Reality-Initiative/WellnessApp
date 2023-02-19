@@ -23,6 +23,7 @@ public class ThrowObject : MonoBehaviour
     IARSession _ARsession;  //An ARDK ARSession is the main piece that manages the AR experience
     public TMP_Text _waterCounter; //Need to get the amount of water from saved data
     public int waterCount;
+    public Player _player;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,8 @@ public class ThrowObject : MonoBehaviour
         //ARSessionFactory helps create our AR Session. Here, we're telling our 'ARSessionFactory' to listen to when a new ARSession is created, then call an 'OnSessionInitialized' function when we get notified of one being created
         ARSessionFactory.SessionInitialized += OnSessionInitialized;
 
-        waterCount = 10;
+        _player = GameObject.Find("Player").GetComponent<Player>();
+        waterCount = _player.waterLevel;
         _waterCounter.text = waterCount.ToString();
 
     }
