@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public string name;
-    public int waterLevel = 1;
+    public int waterLevel;
 
     public static Player Instance; 
 
@@ -19,6 +19,6 @@ public class Player : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
         name = data.name;
-        waterLevel = data.waterL++;
+        waterLevel = data.waterL;
     }
 }
