@@ -6,20 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/HumanAR/HandTracking/HandTracking.unity
-    guid: ad7ffff66652e4350ab5361f8f8facbe
-  - enabled: 1
     path: Assets/Scenes/ChecklistScreen.unity
     guid: 5305ce14457054bc285f9408b13a3930
-  - enabled: 1
-    path: Assets/Scenes/CollectionScreen.unity
-    guid: 0dacd1b0897cd4cccb8e0a4cc66f45ea
   - enabled: 1
     path: Assets/Scenes/ARScreen.unity
     guid: 5c1cf86a449554a4fa8b9ce3b5ddbb97
   - enabled: 1
     path: Assets/ChecklistTeamScenes/Plant Collection Team.unity
     guid: 16fecaa66a31a4d9f86b7eb597de5e73
+  - enabled: 1
+    path: Assets/ChecklistTeamScenes/Ashley.unity
+    guid: 4d274cc1ab2a14c25b693945eadecd50
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 38641299092ef4a24b1b56d804e628c4, type: 2}
