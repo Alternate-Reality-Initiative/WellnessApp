@@ -742,6 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deeb86d2fa34a4df5a4e5a6d724bbf3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
 --- !u!4 &502014088
 Transform:
   m_ObjectHideFlags: 0
@@ -773,8 +774,7 @@ MonoBehaviour:
     type: 3}
   _mainCamera: {fileID: 834537840}
   _waterCounter: {fileID: 665938645}
-  waterCount: 0
-  _player: {fileID: 0}
+  _player: {fileID: 1759418960}
 --- !u!1 &665938643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,6 +1568,7 @@ GameObject:
   - component: {fileID: 1759418960}
   - component: {fileID: 1759418959}
   - component: {fileID: 1759418962}
+  - component: {fileID: 1759418963}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1600,7 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: 
-  waterLevel: 8
+  waterLevel: 10
 --- !u!4 &1759418961
 Transform:
   m_ObjectHideFlags: 0
@@ -1623,7 +1624,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759418958}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc0c1b0654fd34bfd9fde7eba0857979, type: 3}
   m_Name: 
@@ -1631,6 +1632,19 @@ MonoBehaviour:
   name: {fileID: 493657175}
   water: {fileID: 665938645}
   player: {fileID: 1759418960}
+--- !u!114 &1759418963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759418958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5344170e25d4447bbd986846fb1786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
 --- !u!1 &1921342885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,18 +1732,6 @@ MonoBehaviour:
       - m_Target: {fileID: 502014089}
         m_TargetAssemblyTypeName: ThrowObject, Assembly-CSharp
         m_MethodName: ClickButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1759418962}
-        m_TargetAssemblyTypeName: InputFieldManager, Assembly-CSharp
-        m_MethodName: UpdateWater
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
