@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ARScreen.unity
     guid: 5c1cf86a449554a4fa8b9ce3b5ddbb97
+  - enabled: 1
+    path: Assets/ChecklistTeamScenes/Plant Collection Team.unity
+    guid: 16fecaa66a31a4d9f86b7eb597de5e73
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 38641299092ef4a24b1b56d804e628c4, type: 2}
