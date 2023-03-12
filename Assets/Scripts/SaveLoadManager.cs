@@ -15,7 +15,7 @@ public class SaveLoadManager : MonoBehaviour
 
     //private IEnumerator coroutine;
 
-    void Awake()
+    void Start()
     {
         //string text = inputField.GetComponent<TMP_InputField>().text;
         //name.text = PlayerData.name;
@@ -59,9 +59,6 @@ public class SaveLoadManager : MonoBehaviour
         //while (true)
         //{
             player.waterLevel = int.Parse(water.text);
-            //yield return new WaitForSeconds(1f);
-            //player.waterLevel--;
-
             water.text = player.waterLevel.ToString();
             Debug.Log("ho");
             player.SavePlayer();
