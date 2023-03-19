@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public string name;
     public int waterLevel;
+    public int[] arr;
 
     public void SavePlayer()
     {
@@ -18,5 +19,9 @@ public class Player : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
         name = data.name;
         waterLevel = data.waterL;
+        arr = data.arr;
+        if (arr == null) {
+            arr = new int[0];
+        }
     }
 }
