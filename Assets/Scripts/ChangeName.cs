@@ -6,9 +6,10 @@ using TMPro;
 public class ChangeName : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
-    public Player playerdata;
+    private Player playerdata;
     
     void Start() {
+        playerdata = GameObject.Find("Player").GetComponent<Player>();
        nameText.text = "Welcome Back, " + playerdata.name;  
     }
     // Start is called before the first frame update
