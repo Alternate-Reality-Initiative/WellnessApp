@@ -15,6 +15,7 @@ public static class SaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
         Debug.Log(path);
         PlayerData data = new PlayerData(player);
+        
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -28,6 +29,7 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
 
             PlayerData data = formatter.Deserialize(stream) as PlayerData;
+            //Debug.Log(data.waterL);
             stream.Close();
 
             return data;

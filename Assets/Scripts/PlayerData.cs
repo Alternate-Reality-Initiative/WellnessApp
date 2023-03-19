@@ -7,10 +7,18 @@ public class PlayerData
     // Start is called before the first frame update
     public string name;
     public int waterL;
+    public int[] tasks;
+    public int selectedPlant;
+    public int[] plantHealth;
+    public bool[] unlockedPlants;
     
     public PlayerData (Player player){
         name = player.name;
         waterL = player.waterLevel;
+        tasks = player.tasks;
+        selectedPlant= player.selectedPlant;
+        plantHealth= player.plantHealth;
+        unlockedPlants = player.unlockedPlants;
     }
 
     // Update is called once per frame
