@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Health : Monobehaviour
 {
     public int currentHealth;
-    const public int maxHealth = 3;
+    public const int maxHealth = 3;
     public Image[] heartImageDisplay; // array of heart images to display
     public Sprite fullHeart;
     public Sprite emptyHeart;
