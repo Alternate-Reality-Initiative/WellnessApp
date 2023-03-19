@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public int[] tasks;
     public int selectedPlant;
     public int[] plantHealth;
-    public bool[] unlockedPlants;
+    public bool[] unlockedPlants; //plant id numbers
 
     public void SavePlayer()
     {
