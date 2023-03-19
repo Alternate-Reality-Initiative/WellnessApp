@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5f6b1fb620c924da9a7fdce9a2a06d, type: 3}
   m_Name: Wellington
   m_EditorClassIdentifier: 
-  name: Blocky Sakura
-  desc: goodbye winter, hello spring
-  plantObject: {fileID: 919132149155446097, guid: 4c07b400049c0624288c062c85686d8a,
-    type: 3}
-  plantSprite: {fileID: 21300000, guid: 2bb9357e22c5d874ea3bbde9f7cd7251, type: 3}
+  name: 
+  desc: 
+  plantObject: {fileID: 0}
+  plantSprite: {fileID: 0}
