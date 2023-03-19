@@ -6,8 +6,10 @@ public class Player : MonoBehaviour
 {
     public string name;
     public int waterLevel;
-
-    public static Player Instance; 
+    public int[] tasks;
+    public int selectedPlant;
+    public int[] plantHealth;
+    public bool[] unlockedPlants; //plant id numbers
 
     public void SavePlayer()
     {
@@ -20,5 +22,13 @@ public class Player : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
         name = data.name;
         waterLevel = data.waterL;
+        tasks = data.tasks;
+        if (tasks == null) {
+            tasks = new int[0];
+        }
+
+        selectedPlant= data.selectedPlant;
+        plantHealth= data.plantHealth;
+        unlockedPlants= data.unlockedPlants;
     }
 }

@@ -22,7 +22,7 @@ public class ThrowObject : MonoBehaviour
     public Camera _mainCamera;  //This will reference the MainCamera in the scene, so the ARDK can leverage the device camera
     IARSession _ARsession;  //An ARDK ARSession is the main piece that manages the AR experience
     public TMP_Text _waterCounter; //Need to get the amount of water from saved data
-    public int waterCount;
+    //public int waterCount;
     public Player _player;
 
     // Start is called before the first frame update
@@ -31,9 +31,17 @@ public class ThrowObject : MonoBehaviour
         //ARSessionFactory helps create our AR Session. Here, we're telling our 'ARSessionFactory' to listen to when a new ARSession is created, then call an 'OnSessionInitialized' function when we get notified of one being created
         ARSessionFactory.SessionInitialized += OnSessionInitialized;
 
+
+
         _player = GameObject.Find("Player").GetComponent<Player>();
-        waterCount = _player.waterLevel;
-        _waterCounter.text = waterCount.ToString();
+
+
+        //_player.waterLevel = int.Parse(_waterCounter.text);
+        _waterCounter.text = _player.waterLevel.ToString();
+        //Debug.Log(_player.waterLevel);
+
+        // waterCount = _player.waterLevel;
+        // _waterCounter.text = waterCount.ToString();
 
     }
 
@@ -69,7 +77,7 @@ public class ThrowObject : MonoBehaviour
     //This function will be called when the player touches the screen. For us, we'll have this trigger the shooting of our object from where we touch.
     public void ClickButton()
     {
-        if (waterCount > 0) {
+        if (_player.waterLevel > 0) {
             System.Random rnd = new System.Random();
             var radius = .2;
 
@@ -87,8 +95,15 @@ public class ThrowObject : MonoBehaviour
                 StartCoroutine(Evaporate(newObject));
             }
 
-            waterCount--;
-            _waterCounter.text = waterCount.ToString();
+            _player.waterLevel--;
+            _waterCounter.text = _player.waterLevel.ToString();
+            //Debug.Log(_player.waterLevel);
+            // waterCount--;
+            // _waterCounter.text = waterCount.ToString();
+        }
+        else if(_player.waterLevel == 0){
+            _player.waterLevel = 10;
+            _waterCounter.text = _player.waterLevel.ToString();
         }
     }
     IEnumerator Evaporate(GameObject droplet){
