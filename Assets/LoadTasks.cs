@@ -23,13 +23,13 @@ public class LoadTasks : MonoBehaviour
         Debug.Log(TaskArr.Count);
 
 
-        for(int i = 0; i<_player.arr.Length; i++){
-           Debug.Log( TaskArr[_player.arr[i]].taskName);
+        for(int i = 0; i<_player.tasks.Length; i++){
+           Debug.Log( TaskArr[_player.tasks[i]].taskName);
         }
-        _player.arr = new int[2];
+        _player.tasks = new int[2];
 
-        for(int i = 0; i<_player.arr.Length; i++){
-           Debug.Log( TaskArr[_player.arr[i]].taskName);
+        for(int i = 0; i<_player.tasks.Length; i++){
+           Debug.Log( TaskArr[_player.tasks[i]].taskName);
         }
         
     }

@@ -6,7 +6,10 @@ public class Player : MonoBehaviour
 {
     public string name;
     public int waterLevel;
-    public int[] arr;
+    public int[] tasks;
+    public int selectedPlant;
+    public int[] plantHealth;
+    public bool[] unlockedPlants;
 
     public void SavePlayer()
     {
@@ -19,9 +22,13 @@ public class Player : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
         name = data.name;
         waterLevel = data.waterL;
-        arr = data.arr;
-        if (arr == null) {
-            arr = new int[0];
+        tasks = data.arr;
+        if (tasks == null) {
+            tasks = new int[0];
         }
+
+        selectedPlant= data.selectedPlant;
+        plantHealth= data.plantHealth;
+        unlockedPlants= data.unlockedPlants;
     }
 }
