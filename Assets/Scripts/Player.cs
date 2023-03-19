@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
         name = data.name;
         waterLevel = data.waterL;
-        tasks = data.arr;
+        tasks = data.tasks;
         if (tasks == null) {
             tasks = new int[0];
         }
