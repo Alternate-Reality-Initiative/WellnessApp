@@ -20,8 +20,6 @@ public class PlaceARObjectOnHand : MonoBehaviour
     private int _plantIndex;
     private int currentHealth;
     public GameObject emptyPot;
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
 
     public GameObject arObject; 
     List<PlantScriptableObject> plantArr; 
@@ -43,6 +41,9 @@ public class PlaceARObjectOnHand : MonoBehaviour
     void Update()
     {
         PlaceObjectOnHand(handPositionSolver.HandPosition);
+        // if (currentHealth == 0) {
+        //     arObject = emptyPot;
+        // }
     }
 
     private void PlaceObjectOnHand(Vector3 handPosition)
