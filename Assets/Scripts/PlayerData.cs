@@ -8,6 +8,7 @@ public class PlayerData
     public string name;
     public int waterL;
     public int[] tasks;
+    public int[] completedTasks;
     public int selectedPlant;
     public int[] plantHealth;
     public bool[] unlockedPlants;
@@ -16,6 +17,7 @@ public class PlayerData
         name = player.name;
         waterL = player.waterLevel;
         tasks = player.tasks;
+        completedTasks = player.completedTasks;
         selectedPlant= player.selectedPlant;
         plantHealth= player.plantHealth;
         unlockedPlants = player.unlockedPlants;
