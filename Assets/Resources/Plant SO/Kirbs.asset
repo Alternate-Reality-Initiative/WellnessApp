@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba5f6b1fb620c924da9a7fdce9a2a06d, type: 3}
-  m_Name: WhiteFlower
+  m_Name: Kirbs
   m_EditorClassIdentifier: 
-  name: 
-  desc: 
-  plantObject: {fileID: 0}
-  plantSprite: {fileID: 0}
+  name: Kirbs
+  desc: '"Pikachu!"'
+  plantObject: {fileID: 919132149155446097, guid: 6284e13077a75c24b839b2ba388f7dfa,
+    type: 3}
+  plantSprite: {fileID: 21300000, guid: 51d0c494a29f2471b958b23025e34fb8, type: 3}
