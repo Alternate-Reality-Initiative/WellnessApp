@@ -1,41 +1,6 @@
 // using System.Collections;
 // using System.Collections.Generic;
 // using UnityEngine;
-<<<<<<< HEAD
-
-// public class Health : Monobehaviour
-// {
-//     public int currentHealth;
-//     const public int maxHealth = 3;
-//     public Image[] heartImageDisplay; // array of heart images to display
-//     public Sprite fullHeart;
-//     public Sprite emptyHeart;
-//     public DateTime lastDecreaseTime;
-  
-//     public void Start()
-//     {
-//         currentHealth = maxHealth;
-//         lastDecreaseTime = DateTime.Now;
-//     }
-      
-//     public void Update()
-//     {
-//         TimeSpan timeSinceLastDecrease = DateTime.Now - lastDecreaseTime;
-//         if (timeSinceLastDecrease >= 24)  {
-//             lastDecreaseTime = DateTime.Now;
-//             if (currentHealth > 1)
-//             {
-//                 --currentHealth;
-//                 UpdateHealthDisplay();
-//             }
-//            else
-//             {
-//                 return; // this is absolute BS for now
-//                 // instead, DISPLAY EMPTY POT        
-//             }
-//         }
-//     }
-=======
 // using System;
 // using UnityEngine.UI;
 
@@ -109,7 +74,6 @@
 //     //         }
 //     //     }
 //     // }
->>>>>>> cc14f64fb153a18c281f378165c666ab3f8964f7
 
     
 
