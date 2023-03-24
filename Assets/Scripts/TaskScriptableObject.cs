@@ -5,7 +5,7 @@ using UnityEngine;
 public class TaskScriptableObject : ScriptableObject
 {
     public string taskName;
-    public int duration;
+    // public int duration;
     public string description;
 }
 

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 511a460597e5347169eedea43e101045, type: 3}
   m_Name: TasksScriptableObject 1
   m_EditorClassIdentifier: 
-  taskName: Walk
+  taskName: Read
   duration: 30
   description: One chapter of my favorite  book
