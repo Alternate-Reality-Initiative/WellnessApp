@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class InventoryScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public int index;
+    private hideAndShow hideAndShow;
+    private GameObject myBg;
+    void Start () {
+        myBg = transform.Find("YellowBackground").gameObject;
+        if (myBg == null) {
+            Debug.LogError("Could not retrieve background obj for plant card");
+        }
+
+        hideAndShow = GameObject.Find("HideAndShow").GetComponent<hideAndShow>();
+        if (hideAndShow == null) {
+            Debug.LogError("Collection item could not resolve hide and show reference");
+        } 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void OnClick() {
+        hideAndShow.ShowThis(myBg, index);
     }
 }

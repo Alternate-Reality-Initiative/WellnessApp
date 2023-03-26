@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public string name;
     public int waterLevel;
     public int[] tasks;
+    public int[] completedTasks;
     public int selectedPlant;
     public int[] plantHealth;
     public bool[] unlockedPlants; //plant id numbers
@@ -22,13 +23,27 @@ public class Player : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
         name = data.name;
         waterLevel = data.waterL;
+        
         tasks = data.tasks;
         if (tasks == null) {
             tasks = new int[0];
         }
 
+        completedTasks = data.completedTasks;
+        if (completedTasks == null) {
+            completedTasks = new int[0];
+        }
+
         selectedPlant= data.selectedPlant;
+        
         plantHealth= data.plantHealth;
+        if (plantHealth == null) {
+            plantHealth = new int[0];
+        }
+
         unlockedPlants= data.unlockedPlants;
+        if (unlockedPlants == null) {
+            unlockedPlants = new bool[0];
+        }
     }
 }
