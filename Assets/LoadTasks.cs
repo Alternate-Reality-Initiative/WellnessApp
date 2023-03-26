@@ -17,6 +17,7 @@ public class LoadTasks : MonoBehaviour
     //int[] arr = {1,2};
     void Start()
     {
+        Debug.Log("load tasks start");
         // if (dayChange.GetComponent<bool>()) {
 
         // }
