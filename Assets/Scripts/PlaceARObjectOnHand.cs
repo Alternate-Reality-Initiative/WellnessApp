@@ -1,27 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlaceARObjectOnHand : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private HandPositionSolver handPositionSolver;
-    [SerializeField] private GameObject arObject;
+    private PlantScriptableObject plant;
     [SerializeField] private float speedMovement = 0.5f;
     [SerializeField] private float speedRotation = 25.0f;
 
     private float MiNDistance = 0.05f;
     private float minAngleMagnitude = 2.0f;
     private bool shouldAdjustRotation;
+
+    public Player _player;
+    private int[] _plantHealth;
+    private int _plantIndex;
+    private int currentHealth;
+    public GameObject emptyPot;
+
+    public GameObject arObject; 
+    List<PlantScriptableObject> plantArr; 
+
     void Start()
     {
-        
+        _player = GameObject.Find("Player").GetComponent<Player>();
+        //_plantHealth = _player.plantHealth;
+        _plantIndex = _player.selectedPlant;
+        _plantIndex = 0; // temporary
+        //currentHealth = _plantHealth[_plantIndex];
+        plantArr = new List<PlantScriptableObject>();
+        plantArr = Resources.LoadAll<PlantScriptableObject>("Plant SO").Cast<PlantScriptableObject>().ToList();
+        plant = plantArr[_plantIndex];
+        arObject = plant.plantObject;
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
         PlaceObjectOnHand(handPositionSolver.HandPosition);
+        // if (currentHealth == 0) {
+        //     arObject = emptyPot;
+        // }
     }
 
     private void PlaceObjectOnHand(Vector3 handPosition)
