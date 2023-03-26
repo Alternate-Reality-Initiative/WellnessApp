@@ -775,6 +775,9 @@ MonoBehaviour:
   _mainCamera: {fileID: 834537840}
   _waterCounter: {fileID: 665938645}
   _player: {fileID: 1759418960}
+  plantHealths: 
+  plantIndex: 0
+  currentHealth: 0
 --- !u!1 &665938643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,6 +1795,7 @@ MonoBehaviour:
   name: 
   waterLevel: 10
   tasks: 
+  completedTasks: 
   selectedPlant: 0
   plantHealth: 
   unlockedPlants: 

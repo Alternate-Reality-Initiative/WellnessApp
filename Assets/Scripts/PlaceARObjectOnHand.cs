@@ -29,21 +29,25 @@ public class PlaceARObjectOnHand : MonoBehaviour
         _player = GameObject.Find("Player").GetComponent<Player>();
         //_plantHealth = _player.plantHealth;
         _plantIndex = _player.selectedPlant;
-        _plantIndex = 0; // temporary
+        //_plantIndex = 0; // temporary
         //currentHealth = _plantHealth[_plantIndex];
         plantArr = new List<PlantScriptableObject>();
         plantArr = Resources.LoadAll<PlantScriptableObject>("Plant SO").Cast<PlantScriptableObject>().ToList();
         plant = plantArr[_plantIndex];
         arObject = plant.plantObject;
+        Instantiate(arObject, new Vector3(522,1122,0), Quaternion.Euler(new Vector3(-90,0,0)));
     }
 
     //Update is called once per frame
     void Update()
     {
         PlaceObjectOnHand(handPositionSolver.HandPosition);
-        // if (currentHealth == 0) {
-        //     arObject = emptyPot;
-        // }
+        if (currentHealth == 0) {
+            arObject = emptyPot;
+        }
+        else {
+            arObject = plant.plantObject;
+        }
     }
 
     private void PlaceObjectOnHand(Vector3 handPosition)
