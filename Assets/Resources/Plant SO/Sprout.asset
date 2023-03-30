@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba5f6b1fb620c924da9a7fdce9a2a06d, type: 3}
-  m_Name: WhiteFlower
+  m_Name: Sprout
   m_EditorClassIdentifier: 
-  name: White Flower?
-  desc: Breath of fresh air
-  plantObject: {fileID: 8846503636879968817, guid: c3d595d14c61d03429b71cddd12063b9,
+  name: Sprout
+  desc: A cute small sprout
+  plantObject: {fileID: 919132149155446097, guid: f4ffa6111a9c5ec4ab51c3170fe63b2d,
     type: 3}
-  plantSprite: {fileID: 21300000, guid: 51d0c494a29f2471b958b23025e34fb8, type: 3}
+  plantSprite: {fileID: 21300000, guid: 60fd0a5663c384212b0781bbc05cc6fb, type: 3}
