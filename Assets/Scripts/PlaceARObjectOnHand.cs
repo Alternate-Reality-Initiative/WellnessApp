@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class PlaceARObjectOnHand : MonoBehaviour
 {
@@ -27,34 +28,27 @@ public class PlaceARObjectOnHand : MonoBehaviour
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
-        //_plantHealth = _player.plantHealth;
         _plantIndex = _player.selectedPlant;
-        //_plantIndex = 0; // temporary
         //currentHealth = _plantHealth[_plantIndex];
         plantArr = new List<PlantScriptableObject>();
         plantArr = Resources.LoadAll<PlantScriptableObject>("Plant SO").Cast<PlantScriptableObject>().ToList();
         plant = plantArr[_plantIndex];
-        arObject = plant.plantObject;
-        Instantiate(arObject, new Vector3(522,1122,0), Quaternion.Euler(new Vector3(-90,0,0)));
+        GameObject plantModel = plant.plantObject;
+        arObject = Instantiate(plantModel, new Vector3(0,0,5), Quaternion.Euler(new Vector3(-90,0,0)));
+        arObject.transform.localScale = new Vector3(10,10,10); 
     }
 
     //Update is called once per frame
     void Update()
     {
         PlaceObjectOnHand(handPositionSolver.HandPosition);
-        if (currentHealth == 0) {
-            arObject = emptyPot;
-        }
-        else {
-            arObject = plant.plantObject;
-        }
     }
 
     private void PlaceObjectOnHand(Vector3 handPosition)
     {
         float distance = Vector3.Distance(handPosition, arObject.transform.position);
         arObject.transform.position = handPosition;
-            //Vector3.MoveTowards(arObject.transform.position, handPosition, speedMovement * Time.deltaTime);
+        arObject.transform.rotation = Quaternion.Euler(new Vector3(-90,0,0));
         if (distance >= MiNDistance)
         {
             arObject.transform.LookAt(handPosition);
