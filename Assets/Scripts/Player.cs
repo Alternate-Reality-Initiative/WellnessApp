@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public int selectedPlant;
     public int[] plantHealth;
     public bool[] unlockedPlants; //plant id numbers
+    public string previous;
+    // public days_passed daysPassed;
 
     public void SavePlayer()
     {
@@ -44,6 +46,10 @@ public class Player : MonoBehaviour
         unlockedPlants= data.unlockedPlants;
         if (unlockedPlants == null) {
             unlockedPlants = new bool[0];
+        }
+        previous = data.previous;
+        if (previous == null) {
+            previous =  System.DateTime.UtcNow.ToLocalTime().ToString("M/dd");
         }
     }
 }
