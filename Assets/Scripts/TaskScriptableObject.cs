@@ -7,6 +7,7 @@ public class TaskScriptableObject : ScriptableObject
     public string taskName;
     // public int duration;
     public string description;
+    public int waterReward;
 }
 
 
