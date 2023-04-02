@@ -29,12 +29,19 @@ public class PlaceARObjectOnHand : MonoBehaviour
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
         _plantIndex = _player.selectedPlant;
-        //currentHealth = _plantHealth[_plantIndex];
+        currentHealth = _plantHealth[_plantIndex];
         plantArr = new List<PlantScriptableObject>();
         plantArr = Resources.LoadAll<PlantScriptableObject>("Plant SO").Cast<PlantScriptableObject>().ToList();
         plant = plantArr[_plantIndex];
-        GameObject plantModel = plant.plantObject;
-        arObject = Instantiate(plantModel, new Vector3(0,0,5), Quaternion.Euler(new Vector3(-90,0,0)));
+        if (currentHealth == 0)
+        {
+            arObject = Instantiate(emptyPot, new Vector3(0, 0, 5), Quaternion.Euler(new Vector3(-90, 0, 0)));
+        }
+        else
+        {
+            GameObject plantModel = plant.plantObject;
+            arObject = Instantiate(plantModel, new Vector3(0, 0, 5), Quaternion.Euler(new Vector3(-90, 0, 0)));
+        }
         arObject.transform.localScale = new Vector3(10,10,10); 
     }
 
