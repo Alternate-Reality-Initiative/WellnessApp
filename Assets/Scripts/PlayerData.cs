@@ -12,6 +12,7 @@ public class PlayerData
     public int selectedPlant;
     public int[] plantHealth;
     public bool[] unlockedPlants;
+    public string previous; 
     
     public PlayerData (Player player){
         name = player.name;
@@ -21,6 +22,7 @@ public class PlayerData
         selectedPlant= player.selectedPlant;
         plantHealth= player.plantHealth;
         unlockedPlants = player.unlockedPlants;
+        previous = player.previous;
     }
 
     // Update is called once per frame
