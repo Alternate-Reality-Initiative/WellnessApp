@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 511a460597e5347169eedea43e101045, type: 3}
   m_Name: TasksObject
   m_EditorClassIdentifier: 
-  taskName: vads
-  duration: 0
-  description: dasf
+  taskName: Go outside
+  description: 'Spend 30 minutes in the outdoors '
+  waterReward: 1

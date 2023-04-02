@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 511a460597e5347169eedea43e101045, type: 3}
-  m_Name: TasksScriptableObject
+  m_Name: TasksScriptableObject 4
   m_EditorClassIdentifier: 
-  taskName: Brush teeth twice
-  description: For 2 minutes!
+  taskName: Meditate
+  description: 10 minutes of calm and peace
   waterReward: 1
