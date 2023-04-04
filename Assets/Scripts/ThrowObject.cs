@@ -58,7 +58,7 @@ public class ThrowObject : MonoBehaviour
     //This function will be called when the player touches the screen. For us, we'll have this trigger the shooting of our object from where we touch.
     public void ClickButton()
     {
-        if (_player.waterLevel > 0 && currentHealth > 0) {
+        if (_player.waterLevel > 0 && plantHealths[plantIndex] > 0) {
             System.Random rnd = new System.Random();
             var radius = .2;
 
@@ -78,12 +78,10 @@ public class ThrowObject : MonoBehaviour
 
             _player.waterLevel--; // decrement the player's water level
             _waterCounter.text = _player.waterLevel.ToString(); // display new water level
-            _player.plantHealth[plantIndex]++; // increment the selected plant's health
-            currentHealth = plantHealths[plantIndex];
 
             //Debug.Log(_player.waterLevel);
         }
-        else if (_player.waterLevel >= 5 && currentHealth == 0)
+        else if (_player.waterLevel >= 5 && plantHealths[plantIndex] == 0)
         {
             System.Random rnd = new System.Random();
             var radius = .2;
