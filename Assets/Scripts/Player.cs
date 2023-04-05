@@ -47,6 +47,17 @@ public class Player : MonoBehaviour
         
         if (plantHealth.Length == 0) {
             plantHealth = new int[NUM_PLANTS];
+            Array.Fill(plantHealth,3);
+        }
+        int healthSum = 0;
+        for (int i = 0; i < NUM_PLANTS; i++) {
+            healthSum += plantHealth[i];
+        }
+
+        if(healthSum == 0){
+            for(int i = 0; i < NUM_PLANTS; i++){
+                plantHealth[i] = 3;
+            }
         }
 
         unlockedPlants = data.unlockedPlants;
