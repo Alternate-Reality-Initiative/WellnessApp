@@ -39,9 +39,10 @@ public class LoadTasks : MonoBehaviour
         //     _player.tasks[i] = task;
         // }
         //this grabs the task number 2 and puts it in there 
+        
       
         // int task = Random.Range(0, taskObjects.Length);
-        if (dayChange.newDay) {
+        if (dayChange.newDay || dayChange.numDays == 0) {
            
             for (int i = 0; i < 3; i++) {
                 int task = Random.Range(0, TaskArr.Count);
@@ -55,7 +56,7 @@ public class LoadTasks : MonoBehaviour
                 header.GetComponent<TextMeshProUGUI>().text = TaskArr[_player.tasks[i]].taskName;
                 taskDescript.GetComponent<TextMeshProUGUI>().text = TaskArr[_player.tasks[i]].description;
             }
-        
+            dayChange.numDays+= 1; 
         }
   
     }
