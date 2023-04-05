@@ -13,6 +13,7 @@ public class PlayerData
     public int[] plantHealth;
     public bool[] unlockedPlants;
     public string previous; 
+    public int numDaysSinceDownload;
     
     public PlayerData (Player player){
         name = player.name;
@@ -23,6 +24,7 @@ public class PlayerData
         plantHealth = player.plantHealth;
         unlockedPlants = player.unlockedPlants;
         previous = player.previous;
+        numDaysSinceDownload = player.numDaysSinceDownload;
     }
 
     // Update is called once per frame

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     public int[] plantHealth;
     public bool[] unlockedPlants; //plant id numbers
     public string previous;
+    public int numDaysSinceDownload;
 
     private const int NUM_PLANTS = 10;
     // public days_passed daysPassed;
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
         name = data.name;
         waterLevel = data.waterL;
+        numDaysSinceDownload = data.numDaysSinceDownload;
         
         tasks = data.tasks;
         if (tasks.Length == 0) {
@@ -50,8 +53,9 @@ public class Player : MonoBehaviour
         if (unlockedPlants.Length == 0) {
             unlockedPlants = new bool[NUM_PLANTS];
         }
+
         previous = data.previous;
-        if (previous == "") {
+        if (String.IsNullOrWhiteSpace(previous)) {
             previous =  System.DateTime.UtcNow.ToLocalTime().ToString("M/dd");
         }
     }
