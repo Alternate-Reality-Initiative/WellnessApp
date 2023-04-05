@@ -11,6 +11,8 @@ public class LoadTasks : MonoBehaviour
 
     public elapsedtime dayChange;
     public GameObject myParent;
+
+    public TextMeshProUGUI debugText;
     List<TaskScriptableObject> TaskArr; 
     Player _player;
     private List<int> localTasks = new List<int>(5);
@@ -40,6 +42,7 @@ public class LoadTasks : MonoBehaviour
         // }
         //this grabs the task number 2 and puts it in there 
         
+        //debugText.text = "num days since dl: " + _player.numDaysSinceDownload;
       
         // int task = Random.Range(0, taskObjects.Length);
         if (dayChange.newDay || _player.numDaysSinceDownload == 0) {
@@ -48,7 +51,6 @@ public class LoadTasks : MonoBehaviour
 
             for (int i = 0; i < 5; i++) {
                 int task = Random.Range(0, TaskArr.Count);
-                //  _player.tasks[i] = task;
                  while (localTasks.Contains(task)) {
                     task = Random.Range(0, TaskArr.Count);
                  }
@@ -67,10 +69,6 @@ public class LoadTasks : MonoBehaviour
             header.GetComponent<TextMeshProUGUI>().text = TaskArr[_player.tasks[i]].taskName;
             taskDescript.GetComponent<TextMeshProUGUI>().text = TaskArr[_player.tasks[i]].description;
         }
-        
-        // for (int i = 0; i < 5; i++) {
-        //     localTasks[i] = _player.tasks[i];
-        // }
   
     }
 
