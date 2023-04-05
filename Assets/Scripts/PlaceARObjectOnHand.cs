@@ -17,7 +17,6 @@ public class PlaceARObjectOnHand : MonoBehaviour
     private bool shouldAdjustRotation;
 
     public Player _player;
-    private int[] _plantHealth;
     private int _plantIndex;
     private int currentHealth;
     public GameObject emptyPot;
@@ -29,10 +28,12 @@ public class PlaceARObjectOnHand : MonoBehaviour
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
         _plantIndex = _player.selectedPlant;
-        currentHealth = _plantHealth[_plantIndex];
+        currentHealth = _player.plantHealth[_plantIndex];
         plantArr = new List<PlantScriptableObject>();
         plantArr = Resources.LoadAll<PlantScriptableObject>("Plant SO").Cast<PlantScriptableObject>().ToList();
+        
         plant = plantArr[_plantIndex];
+        
         if (currentHealth == 0)
         {
             arObject = Instantiate(emptyPot, new Vector3(0, 0, 5), Quaternion.Euler(new Vector3(-90, 0, 0)));

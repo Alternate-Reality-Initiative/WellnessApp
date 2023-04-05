@@ -19,8 +19,8 @@ public class PlayerData
         waterL = player.waterLevel;
         tasks = player.tasks;
         completedTasks = player.completedTasks;
-        selectedPlant= player.selectedPlant;
-        plantHealth= player.plantHealth;
+        selectedPlant = player.selectedPlant;
+        plantHealth = player.plantHealth;
         unlockedPlants = player.unlockedPlants;
         previous = player.previous;
     }

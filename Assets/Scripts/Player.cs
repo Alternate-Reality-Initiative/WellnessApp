@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public int[] plantHealth;
     public bool[] unlockedPlants; //plant id numbers
     public string previous;
+
+    private const int NUM_PLANTS = 10;
     // public days_passed daysPassed;
 
     public void SavePlayer()
@@ -27,28 +29,29 @@ public class Player : MonoBehaviour
         waterLevel = data.waterL;
         
         tasks = data.tasks;
-        if (tasks == null) {
-            tasks = new int[0];
+        if (tasks.Length == 0) {
+            tasks = new int[NUM_PLANTS];
         }
 
         completedTasks = data.completedTasks;
-        if (completedTasks == null) {
-            completedTasks = new int[0];
+        if (completedTasks.Length == 0) {
+            completedTasks = new int[NUM_PLANTS];
         }
 
-        selectedPlant= data.selectedPlant;
+        selectedPlant = data.selectedPlant;
         
-        plantHealth= data.plantHealth;
-        if (plantHealth == null) {
-            plantHealth = new int[0];
+        plantHealth = data.plantHealth;
+        
+        if (plantHealth.Length == 0) {
+            plantHealth = new int[NUM_PLANTS];
         }
 
-        unlockedPlants= data.unlockedPlants;
-        if (unlockedPlants == null) {
-            unlockedPlants = new bool[0];
+        unlockedPlants = data.unlockedPlants;
+        if (unlockedPlants.Length == 0) {
+            unlockedPlants = new bool[NUM_PLANTS];
         }
         previous = data.previous;
-        if (previous == null) {
+        if (previous == "") {
             previous =  System.DateTime.UtcNow.ToLocalTime().ToString("M/dd");
         }
     }
