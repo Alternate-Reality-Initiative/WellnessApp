@@ -15,7 +15,9 @@ public class Player : MonoBehaviour
     public string previous;
     public int numDaysSinceDownload;
 
-    private const int NUM_PLANTS = 10;
+    [HideInInspector]
+    public const int NUM_PLANTS = 10;
+    public const int SPROUT_INDEX = 4;
     // public days_passed daysPassed;
 
     public void SavePlayer()
@@ -60,9 +62,18 @@ public class Player : MonoBehaviour
             }
         }
 
+
         unlockedPlants = data.unlockedPlants;
-        if (unlockedPlants.Length == 0) {
+        int unlockSum = 0;
+        for (int i = 0; i < NUM_PLANTS; i++) {
+            if (unlockedPlants[i] == true) {
+                unlockSum++;
+            }
+        }
+        if (unlockSum == 0) {
             unlockedPlants = new bool[NUM_PLANTS];
+            unlockedPlants[SPROUT_INDEX] = true;
+            selectedPlant = SPROUT_INDEX;
         }
 
         previous = data.previous;
