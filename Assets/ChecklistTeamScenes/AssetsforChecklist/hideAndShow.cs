@@ -15,7 +15,6 @@ public class hideAndShow : MonoBehaviour
   public GameObject promptPanel;
   public TextMeshProUGUI promptWaterCost;
   public Button spendWaterButton;
-  public GameObject debugMenu;
   private int indexOfPlantInPrompt = -1;
   private List<PlantScriptableObject> plantArr; 
 
@@ -121,5 +120,9 @@ public class hideAndShow : MonoBehaviour
     }
     // reload the scene 
     GameObject.Find("SceneManager").GetComponent<SceneController>().SwitchScene("Plant Collection Team");
+  }
+
+  public void ResetWaterOnClick() {
+    player.waterLevel = 10;
   }
 }

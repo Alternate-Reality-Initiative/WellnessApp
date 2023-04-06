@@ -23,7 +23,6 @@ public static class SaveSystem
 
     public static PlayerData LoadPlayer (){
 
-        Debug.Log("loading player");
         string path = Path.Combine(Application.persistentDataPath, "player.wow");
         if(File.Exists(path)){
             BinaryFormatter formatter = new BinaryFormatter();
