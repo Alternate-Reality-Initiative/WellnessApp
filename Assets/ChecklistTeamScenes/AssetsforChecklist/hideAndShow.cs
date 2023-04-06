@@ -61,6 +61,8 @@ public class hideAndShow : MonoBehaviour
 
   public void SpendWaterToUnlockOnClick() {
     if (indexOfPlantInPrompt != -1) {
+      player.waterLevel -= 3;
+
       // set to unlocked in data
       player.unlockedPlants[indexOfPlantInPrompt] = true;
       player.selectedPlant = indexOfPlantInPrompt;
