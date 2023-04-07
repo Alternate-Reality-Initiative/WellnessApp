@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sprout
   desc: A cute small sprout
-  plantObject: {fileID: 919132149155446097, guid: f4ffa6111a9c5ec4ab51c3170fe63b2d,
+  plantObject: {fileID: 735274894797185927, guid: 8b554544a87e749c1aeaaf200b47ab35,
     type: 3}
   plantSprite: {fileID: 21300000, guid: 60fd0a5663c384212b0781bbc05cc6fb, type: 3}

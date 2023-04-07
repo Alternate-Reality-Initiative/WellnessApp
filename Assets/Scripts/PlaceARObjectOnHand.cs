@@ -44,6 +44,9 @@ public class PlaceARObjectOnHand : MonoBehaviour
             arObject = Instantiate(plantModel, new Vector3(0, 0, 5), Quaternion.Euler(new Vector3(-90, 0, 0)));
         }
         arObject.transform.localScale = new Vector3(10,10,10); 
+        if (plantArr[_plantIndex].name == "Sprout") {
+            arObject.transform.localScale = new Vector3(0.1f,0.1f,0.1f); 
+        }
     }
 
     //Update is called once per frame

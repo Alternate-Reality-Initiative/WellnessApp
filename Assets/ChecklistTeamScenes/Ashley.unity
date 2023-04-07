@@ -2676,6 +2676,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 885489582}
     m_Modifications:
+    - target: {fileID: 3556140262563984072, guid: 13bbd9d1b09a34a70967acc9044073e1,
+        type: 3}
+      propertyPath: m_text
+      value: 'COLLECTION
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3556140263449238918, guid: 13bbd9d1b09a34a70967acc9044073e1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3903,8 +3910,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -408.5, y: 408.03223}
-  m_SizeDelta: {x: 107.17, y: 112.8951}
+  m_AnchoredPosition: {x: -408.5, y: 498.53418}
+  m_SizeDelta: {x: 107.17, y: 120.5828}
   m_Pivot: {x: 0.15486854, y: 0.61403346}
 --- !u!114 &1367223158
 MonoBehaviour:
