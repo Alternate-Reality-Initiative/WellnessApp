@@ -27,6 +27,8 @@ public class ThrowObject : MonoBehaviour
     public int[] plantHealths;
     public int plantIndex;
     public int currentHealth;
+    public Collision collision;
+    public GameObject plant;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,9 @@ public class ThrowObject : MonoBehaviour
         plantHealths = _player.plantHealth;
         plantIndex = _player.selectedPlant;
         currentHealth = plantHealths[plantIndex];
+        PlaceARObjectOnHand script = GetComponent<PlaceARObjectOnHand>();
+        plant = script.arObject;
+        collision = plant.GetComponent<Collision>();
 
 
         //_player.waterLevel = int.Parse(_waterCounter.text);
@@ -112,7 +117,15 @@ public class ThrowObject : MonoBehaviour
         //}
     }
     IEnumerator Evaporate(GameObject droplet){
-        yield return new WaitForSeconds(2f);
-        Destroy(droplet);
+        if (collision.gameObject.tag == "raindrop" && _player.plantHealth[_player.selectedPlant] < 3)
+        {
+            _player.plantHealth[_player.selectedPlant]++;
+            Destroy(droplet);
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+            Destroy(droplet);
+        }
     }
 }

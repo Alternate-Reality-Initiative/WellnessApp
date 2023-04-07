@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -653,10 +653,13 @@ MonoBehaviour:
     type: 3}
   _mainCamera: {fileID: 834537840}
   _waterCounter: {fileID: 665938645}
+  waterCount: 0
   _player: {fileID: 1759418960}
   plantHealths: 
   plantIndex: 0
   currentHealth: 0
+  collision: {fileID: 0}
+  plant: {fileID: 0}
 --- !u!1 &665938643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,6 +1680,7 @@ MonoBehaviour:
   selectedPlant: 0
   plantHealth: 
   unlockedPlants: 
+  previous: 
 --- !u!4 &1759418961
 Transform:
   m_ObjectHideFlags: 0
@@ -1732,6 +1736,7 @@ GameObject:
   - component: {fileID: 1921342889}
   - component: {fileID: 1921342888}
   - component: {fileID: 1921342887}
+  - component: {fileID: 1921342890}
   m_Layer: 5
   m_Name: Water Button
   m_TagString: Untagged
@@ -1854,6 +1859,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921342885}
   m_CullTransparentMesh: 1
+--- !u!114 &1921342890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921342885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc7396ac3505764ca0924a69c983ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  button: {fileID: 1921342887}
+  water: {fileID: 21300000, guid: 916811b85bb0d71408f0e6d725306877, type: 3}
+  revive: {fileID: 21300000, guid: f2c6ca3e3f25ec340bcbeceee0b9405b, type: 3}
 --- !u!1 &1972460647
 GameObject:
   m_ObjectHideFlags: 0
