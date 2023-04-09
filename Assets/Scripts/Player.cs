@@ -8,7 +8,9 @@ public class Player : MonoBehaviour
     public string name;
     public int waterLevel;
     public int[] tasks;
-    public int[] completedTasks;
+    public int[] weeklyTasks;
+    public bool[] completedDailyTasks;
+    public bool[] completedWeeklyTasks;
     public int selectedPlant;
     public int[] plantHealth;
     public bool[] unlockedPlants; //plant id numbers
@@ -38,9 +40,19 @@ public class Player : MonoBehaviour
             tasks = new int[NUM_PLANTS];
         }
 
-        completedTasks = data.completedTasks;
-        if (completedTasks.Length == 0) {
-            completedTasks = new int[NUM_PLANTS];
+        completedDailyTasks = data.completedDailyTasks;
+        if (completedDailyTasks.Length == 0) {
+            completedDailyTasks = new bool[NUM_PLANTS];
+        }
+
+        weeklyTasks = data.weeklyTasks;
+        if (weeklyTasks.Length == 0) {
+            weeklyTasks = new int[NUM_PLANTS];
+        }
+
+        completedWeeklyTasks = data.completedWeeklyTasks;
+        if (completedWeeklyTasks.Length == 0) {
+            completedWeeklyTasks = new bool[NUM_PLANTS];
         }
 
         selectedPlant = data.selectedPlant;
