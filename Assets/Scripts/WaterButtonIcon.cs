@@ -9,7 +9,6 @@ public class WaterButtonIcon : MonoBehaviour
     private Player _player;
     private int[] plantHealths;
     private int plantIndex;
-    private int currentHealth;
     public Button button;
     public Sprite water;
     public Sprite revive;
@@ -20,7 +19,6 @@ public class WaterButtonIcon : MonoBehaviour
         _player = GameObject.Find("Player").GetComponent<Player>();
         plantHealths = _player.plantHealth;
         plantIndex = _player.selectedPlant;
-        currentHealth = plantHealths[plantIndex];
     }
 
     // Update is called once per frame
@@ -31,7 +29,7 @@ public class WaterButtonIcon : MonoBehaviour
 
     private void ChangeIcon()
     {
-        if (currentHealth > 0)
+        if (plantHealths[plantIndex] > 0)
         {
             button.image.sprite = water;
         }
