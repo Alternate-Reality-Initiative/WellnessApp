@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5053341242110369582}
   - component: {fileID: 7045288292702563300}
   - component: {fileID: 4132983134460105376}
+  - component: {fileID: -1318723901518389737}
   m_Layer: 0
   m_Name: white_flower_kritigupta
   m_TagString: Untagged
@@ -100,3 +101,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02421294, y: 0.022223528, z: 0.032593697}
   m_Center: {x: 0.0009947037, y: 0, z: 0.0062968507}
+--- !u!114 &-1318723901518389737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846503636879968817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6322cb800a4554396a0c6b6dad3fdc9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}

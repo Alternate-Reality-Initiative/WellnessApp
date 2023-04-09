@@ -14,13 +14,7 @@ public class SaveManager : MonoBehaviour
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
         string path = Path.Combine(Application.persistentDataPath, "player.wow");
-        if (File.Exists(path))
-        {
-            _player.LoadPlayer();
-            //Debug.Log(_player.waterLevel);
-            //name.text = player.name;
-            //water.text = player.waterLevel.ToString();
-        }
+        _player.LoadPlayer();
 
     }
 

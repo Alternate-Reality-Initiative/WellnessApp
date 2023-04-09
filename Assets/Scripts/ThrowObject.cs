@@ -22,11 +22,13 @@ public class ThrowObject : MonoBehaviour
     public Camera _mainCamera;  //This will reference the MainCamera in the scene, so the ARDK can leverage the device camera
     IARSession _ARsession;  //An ARDK ARSession is the main piece that manages the AR experience
     public TMP_Text _waterCounter; //Need to get the amount of water from saved data
-    //public int waterCount;
+    public int waterCount;
     public Player _player;
     public int[] plantHealths;
     public int plantIndex;
     public int currentHealth;
+    public Collision collision;
+    public GameObject plant;
 
     // Start is called before the first frame update
     void Start()
@@ -35,38 +37,18 @@ public class ThrowObject : MonoBehaviour
         ARSessionFactory.SessionInitialized += OnSessionInitialized;
 
         _player = GameObject.Find("Player").GetComponent<Player>();
-        //plantHealths = _player.plantHealth;       // NEEDED
+        plantHealths = _player.plantHealth;
         plantIndex = _player.selectedPlant;
-        //currentHealth = plantHealths[plantIndex];     // NEEDED  
+        currentHealth = plantHealths[plantIndex];
+        PlaceARObjectOnHand script = GetComponent<PlaceARObjectOnHand>();
+        plant = script.arObject;
+        collision = plant.GetComponent<Collision>();
 
 
         //_player.waterLevel = int.Parse(_waterCounter.text);
         _waterCounter.text = _player.waterLevel.ToString();
         //Debug.Log(_player.waterLevel);
-
-        // waterCount = _player.waterLevel;
-        // _waterCounter.text = waterCount.ToString();
-
     }
-
-/*
-    // Update is called once per frame
-    void Update()
-    {
-        //If there is no touch, we're not going to do anything
-        if(PlatformAgnosticInput.touchCount <= 0)
-        {
-            return;
-        }
-
-        //If we detect a new touch, call our 'TouchBegan' function
-        var touch = PlatformAgnosticInput.GetTouch(0);
-        if(touch.phase == TouchPhase.Began)
-        {
-            TouchBegan(touch);
-        }
-    }
-*/
 
     //This function will be called when a new AR Session has been created, as we instructed our 'ARSessionFactory' earlier
     public void OnSessionInitialized(AnyARSessionInitializedArgs args)
@@ -81,7 +63,7 @@ public class ThrowObject : MonoBehaviour
     //This function will be called when the player touches the screen. For us, we'll have this trigger the shooting of our object from where we touch.
     public void ClickButton()
     {
-        //if (_player.waterLevel > 0 && currentHealth > 0) {
+        if (_player.waterLevel > 0 && plantHealths[plantIndex] > 0) {
             System.Random rnd = new System.Random();
             var radius = .2;
 
@@ -99,44 +81,51 @@ public class ThrowObject : MonoBehaviour
                 StartCoroutine(Evaporate(newObject));
             }
 
-            _player.waterLevel--;
-            _waterCounter.text = _player.waterLevel.ToString();
-            //_player.playerHealth[selectedPlant]++;        // NEEDED
-
+            _player.waterLevel--; // decrement the player's water level
+            _waterCounter.text = _player.waterLevel.ToString(); // display new water level
 
             //Debug.Log(_player.waterLevel);
-            // waterCount--;
-            // _waterCounter.text = waterCount.ToString();
+        }
+        else if (_player.waterLevel >= 5 && plantHealths[plantIndex] == 0)
+        {
+            System.Random rnd = new System.Random();
+            var radius = .2;
+
+            for (int i = 0; i < 15; i++)
+            {
+                double angle = rnd.NextDouble() * (2 * Math.PI);
+
+                GameObject newObject = Instantiate(_objectPrefab);  //Spawn a new object from our Ball Prefab
+                newObject.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new object
+                newObject.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;    //Set the position of our new object to just in front of our Main Camera
+                newObject.transform.Translate((float)(radius * Math.Cos(angle)), (float)(radius * Math.Sin(angle)), 0);
+                Rigidbody rigbod = newObject.GetComponent<Rigidbody>();
+                rigbod.velocity = new Vector3(0f, 0f, 0f);
+                float force = 300.0f;
+                rigbod.AddForce(_mainCamera.transform.forward * force);
+                StartCoroutine(Evaporate(newObject));
+            }
+
+            for (int i = 0; i < 5; i++) _player.waterLevel--; // decrement water level 5 times
+            _waterCounter.text = _player.waterLevel.ToString();
+            _player.plantHealth[plantIndex] = 3; // revive the selected plant's health back to 3
+        }
+        //else if (_player.waterLevel == 0)             // FOR TESTING
+        //{
+        //    _player.waterLevel = 10;
+        //    _waterCounter.text = _player.waterLevel.ToString();
         //}
-        // else if (_player.waterLevel >= 5 && currentHealth == 0) {
-        //     System.Random rnd = new System.Random();
-        //     var radius = .2;
-
-        //     for(int i = 0; i < 15; i++){
-        //         double angle = rnd.NextDouble() * (2 * Math.PI);
-
-        //         GameObject newObject = Instantiate(_objectPrefab);  //Spawn a new object from our Ball Prefab
-        //         newObject.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));   //Set the rotation of our new object
-        //         newObject.transform.position = _mainCamera.transform.position + _mainCamera.transform.forward;    //Set the position of our new object to just in front of our Main Camera
-        //         newObject.transform.Translate((float)(radius * Math.Cos(angle)), (float)(radius * Math.Sin(angle)), 0);
-        //         Rigidbody rigbod = newObject.GetComponent<Rigidbody>();
-        //         rigbod.velocity = new Vector3(0f, 0f, 0f);
-        //         float force = 300.0f;
-        //         rigbod.AddForce(_mainCamera.transform.forward * force);
-        //         StartCoroutine(Evaporate(newObject));
-        //     }
-
-        //     for(int i = 0; i < 5; i++) _player.waterLevel--;
-        //     _waterCounter.text = _player.waterLevel.ToString();
-        //     //_player.playerHealth[selectedPlant] = 3;        // NEEDED
-        // }
-        // else if(_player.waterLevel == 0){
-        //     _player.waterLevel = 10;
-        //     _waterCounter.text = _player.waterLevel.ToString();
-        // }
     }
     IEnumerator Evaporate(GameObject droplet){
-        yield return new WaitForSeconds(2f);
-        Destroy(droplet);
+        if (collision.gameObject.tag == "raindrop" && _player.plantHealth[_player.selectedPlant] < 3)
+        {
+            _player.plantHealth[_player.selectedPlant]++;
+            Destroy(droplet);
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+            Destroy(droplet);
+        }
     }
 }

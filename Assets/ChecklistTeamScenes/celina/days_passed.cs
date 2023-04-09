@@ -8,7 +8,7 @@ public class days_passed : MonoBehaviour
     private static System.DateTime startDate;
     private static System.DateTime today;
     // PlayerPrefs numDays; //needs to be saved 
-    string numdays;
+    public string numdays;
 
     //when app is launched for the first time, save the date 
     //to update days-passed, subtract current date from saved start date

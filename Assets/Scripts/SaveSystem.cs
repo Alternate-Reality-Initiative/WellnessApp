@@ -34,9 +34,17 @@ public static class SaveSystem
 
             return data;
         }
-        else{
-            Debug.LogError("File not found in " + path);
-            return null;
+        else {
+            // we need to make a player data with default values
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            FileStream stream = new FileStream(path, FileMode.Create);
+            PlayerData data = new PlayerData(); //using default constructor
+
+            formatter.Serialize(stream, data);
+            stream.Close();
+
+            return data;
         }
         
     }

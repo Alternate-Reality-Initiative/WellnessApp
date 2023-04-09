@@ -18,10 +18,10 @@ public class HealthDisplay : MonoBehaviour
     public void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
-        //plantHealths = _player.plantHealth;
+        plantHealths = _player.plantHealth;
         plantIndex = _player.selectedPlant;
-        //currentHealth = plantHealths[plantIndex];
-        currentHealth = 2; // testing
+        currentHealth = plantHealths[plantIndex];
+        //currentHealth = 2; // testing
     }
       
     public void Update()

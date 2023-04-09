@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5171943707148752483}
   - component: {fileID: 6927266507382317737}
   - component: {fileID: 3463964111906731787}
+  - component: {fileID: 1758944755030960873}
   m_Layer: 0
   m_Name: Blocky_Sakura
   m_TagString: Untagged
@@ -106,3 +107,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.029460516, y: 0.023926353, z: 0.033113725}
   m_Center: {x: 0.0013235207, y: 0.00085141213, z: 0.006556866}
+--- !u!114 &1758944755030960873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872764577647182716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6322cb800a4554396a0c6b6dad3fdc9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}

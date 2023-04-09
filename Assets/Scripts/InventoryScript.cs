@@ -7,6 +7,8 @@ public class InventoryScript : MonoBehaviour
     public int index;
     private hideAndShow hideAndShow;
     private GameObject myBg;
+    [HideInInspector]
+    public bool isUnlocked = false;
     void Start () {
         myBg = transform.Find("YellowBackground").gameObject;
         if (myBg == null) {
@@ -20,6 +22,11 @@ public class InventoryScript : MonoBehaviour
     }
 
     public void OnClick() {
-        hideAndShow.ShowThis(myBg, index);
+        if (isUnlocked) {
+            hideAndShow.SelectThisPlant(myBg, index);
+        } else { 
+            // show unlock prompt
+            hideAndShow.ShowPrompt(index);
+        }
     }
 }

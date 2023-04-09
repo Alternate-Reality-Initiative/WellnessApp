@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class Player : MonoBehaviour
     public int selectedPlant;
     public int[] plantHealth;
     public bool[] unlockedPlants; //plant id numbers
+    public string previous;
+    public int numDaysSinceDownload;
+
+    [HideInInspector]
+    public const int NUM_PLANTS = 10;
+    public const int SPROUT_INDEX = 4;
+    // public days_passed daysPassed;
 
     public void SavePlayer()
     {
@@ -23,27 +31,54 @@ public class Player : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
         name = data.name;
         waterLevel = data.waterL;
+        numDaysSinceDownload = data.numDaysSinceDownload;
         
         tasks = data.tasks;
-        if (tasks == null) {
-            tasks = new int[0];
+        if (tasks.Length == 0) {
+            tasks = new int[NUM_PLANTS];
         }
 
         completedTasks = data.completedTasks;
-        if (completedTasks == null) {
-            completedTasks = new int[0];
+        if (completedTasks.Length == 0) {
+            completedTasks = new int[NUM_PLANTS];
         }
 
-        selectedPlant= data.selectedPlant;
+        selectedPlant = data.selectedPlant;
         
-        plantHealth= data.plantHealth;
-        if (plantHealth == null) {
-            plantHealth = new int[0];
+        plantHealth = data.plantHealth;
+        
+        if (plantHealth.Length == 0) {
+            plantHealth = new int[NUM_PLANTS];
+            Array.Fill(plantHealth,3);
+        }
+        int healthSum = 0;
+        for (int i = 0; i < NUM_PLANTS; i++) {
+            healthSum += plantHealth[i];
         }
 
-        unlockedPlants= data.unlockedPlants;
-        if (unlockedPlants == null) {
-            unlockedPlants = new bool[0];
+        if(healthSum == 0){
+            for(int i = 0; i < NUM_PLANTS; i++){
+                plantHealth[i] = 3;
+            }
+        }
+
+
+        unlockedPlants = data.unlockedPlants;
+        int unlockSum = 0;
+        for (int i = 0; i < NUM_PLANTS; i++) {
+            if (unlockedPlants[i] == true) {
+                unlockSum++;
+            }
+        }
+        if (unlockSum == 0) {
+            unlockedPlants = new bool[NUM_PLANTS];
+            unlockedPlants[SPROUT_INDEX] = true;
+            selectedPlant = SPROUT_INDEX;
+        }
+
+        previous = data.previous;
+        if (String.IsNullOrWhiteSpace(previous)) {
+            previous =  System.DateTime.UtcNow.ToLocalTime().ToString("M/dd");
         }
     }
 }
