@@ -46,7 +46,7 @@ public class ThrowObject : MonoBehaviour
         plantHealths = _player.plantHealth;
         plantIndex = _player.selectedPlant;
         currentHealth = plantHealths[plantIndex];
-        PlaceARObjectOnHand script = GetComponent<PlaceARObjectOnHand>();
+        PlaceARObjectOnHand script = GameObject.Find("ExampleManager").GetComponent<PlaceARObjectOnHand>();
         plant = script.arObject;
         //collision = plant.GetComponent<Collision>();
         plantArr = new List<PlantScriptableObject>();
@@ -96,8 +96,8 @@ public class ThrowObject : MonoBehaviour
         }
         else if (plantHealths[plantIndex] == 0) // revive button
         {
+            Debug.Log("hi");
             ShowPrompt();
-            SpendWaterToReviveOnClick();
         }
         //else if (_player.waterLevel == 0)             // FOR TESTING
         //{
@@ -119,6 +119,7 @@ public class ThrowObject : MonoBehaviour
     //}
     private void ShowPrompt()
     {
+        Debug.Log("hello");
         promptPanel.SetActive(true);
 
         PlantScriptableObject plantInfo = plantArr[plantIndex];
@@ -141,7 +142,7 @@ public class ThrowObject : MonoBehaviour
         promptPanel.SetActive(false);
     }
 
-    private void SpendWaterToReviveOnClick()
+    public void SpendWaterToReviveOnClick()
     {
         if (_player.waterLevel >= 5)
         {

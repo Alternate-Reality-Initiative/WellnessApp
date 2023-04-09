@@ -720,9 +720,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: hideAndShow, Assembly-CSharp
-        m_MethodName: SpendWaterToUnlockOnClick
+      - m_Target: {fileID: 290673727}
+        m_TargetAssemblyTypeName: ThrowObject, Assembly-CSharp
+        m_MethodName: SpendWaterToReviveOnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2980,7 +2980,9 @@ MonoBehaviour:
   name: 
   waterLevel: 10
   tasks: 
-  completedTasks: 
+  weeklyTasks: 
+  completedDailyTasks: 
+  completedWeeklyTasks: 
   selectedPlant: 0
   plantHealth: 
   unlockedPlants: 
@@ -3248,7 +3250,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 290673727}
         m_TargetAssemblyTypeName: ThrowObject, Assembly-CSharp
         m_MethodName: ClickButton
         m_Mode: 1
