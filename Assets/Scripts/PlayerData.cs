@@ -42,7 +42,7 @@ public class PlayerData
             unlockedPlants[i] = false;
         }
         unlockedPlants[Player.SPROUT_INDEX] = true;
-        previous = System.DateTime.UtcNow.ToLocalTime().ToString("M/dd");
+        previous = System.DateTime.UtcNow.ToLocalTime().ToString();
         numDaysSinceDownload = 0;
     }
 

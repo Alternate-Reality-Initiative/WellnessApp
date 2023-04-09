@@ -77,8 +77,9 @@ public class Player : MonoBehaviour
         }
 
         previous = data.previous;
-        if (String.IsNullOrWhiteSpace(previous)) {
-            previous =  System.DateTime.UtcNow.ToLocalTime().ToString("M/dd");
+        Debug.Log("prev initial" + previous);
+        if (previous == "") {
+            previous =  System.DateTime.UtcNow.ToLocalTime().ToString();
         }
     }
 }
