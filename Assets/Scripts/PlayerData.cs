@@ -8,7 +8,9 @@ public class PlayerData
     public string name;
     public int waterL;
     public int[] tasks;
-    public int[] completedTasks;
+    public int[] weeklyTasks;
+    public bool[] completedDailyTasks;
+    public bool[] completedWeeklyTasks;
     public int selectedPlant;
     public int[] plantHealth;
     public bool[] unlockedPlants;
@@ -19,7 +21,9 @@ public class PlayerData
         name = player.name;
         waterL = player.waterLevel;
         tasks = player.tasks;
-        completedTasks = player.completedTasks;
+        weeklyTasks = player.weeklyTasks;
+        completedDailyTasks = player.completedDailyTasks;
+        completedWeeklyTasks = player.completedWeeklyTasks;
         selectedPlant = player.selectedPlant;
         plantHealth = player.plantHealth;
         unlockedPlants = player.unlockedPlants;
@@ -31,7 +35,9 @@ public class PlayerData
         name = "";
         waterL = 10;
         tasks = new int[30]; //just picked a random size idk
-        completedTasks = new int[30];
+        weeklyTasks = new int[30];
+        completedDailyTasks = new bool[30];
+        completedWeeklyTasks = new bool[30];
         selectedPlant = Player.SPROUT_INDEX;
         plantHealth = new int[Player.NUM_PLANTS];
         for (int i = 0; i < Player.NUM_PLANTS; i++) {

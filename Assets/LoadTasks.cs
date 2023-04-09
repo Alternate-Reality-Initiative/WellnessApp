@@ -64,6 +64,11 @@ public class LoadTasks : MonoBehaviour
 
         for(int i = 0; i<5; i++){
             GameObject newTask = GameObject.Instantiate(taskToGenerate, myParent.transform);
+            ListenToggle tog = newTask.GetComponent<ListenToggle>();
+            tog.myToggle.isOn = _player.completedDailyTasks[i];
+            tog.myToggle.interactable = !(_player.completedDailyTasks[i]);
+            tog.index = i;
+            
             GameObject header = newTask.transform.GetChild(0).gameObject;
             GameObject taskDescript = newTask.transform.GetChild(1).gameObject;
             header.GetComponent<TextMeshProUGUI>().text = TaskArr[_player.tasks[i]].taskName;
@@ -93,6 +98,7 @@ public class LoadTasks : MonoBehaviour
 
         for(int i = 0; i< 5; i++){
             GameObject newTask = GameObject.Instantiate(taskToGenerate, myParent.transform);
+            newTask.GetComponent<ListenToggle>().index = i;
             GameObject header = newTask.transform.GetChild(0).gameObject;
             GameObject taskDescript = newTask.transform.GetChild(1).gameObject;
             header.GetComponent<TextMeshProUGUI>().text = TaskArr[_player.tasks[i]].taskName;

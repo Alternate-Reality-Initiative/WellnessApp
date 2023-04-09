@@ -9,7 +9,7 @@ using System.Globalization;
 public class week : MonoBehaviour
 {   
     
-    DateTime date = System.DateTime.Now;
+    DateTime date = System.DateTime.UtcNow.ToLocalTime();
     Calendar day;
     DayOfWeek val;
     public bool newWeek;
@@ -22,7 +22,7 @@ public class week : MonoBehaviour
         val = day.GetDayOfWeek(date);
         
 
-        if (val != DayOfWeek.Sunday) {
+        if (val == DayOfWeek.Monday) {
             newWeek = true; 
                  
         }
