@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Inwe
   desc: A Huggable Plant
-  plantObject: {fileID: 919132149155446097, guid: f4ffa6111a9c5ec4ab51c3170fe63b2d,
+  plantObject: {fileID: 8912987842070628923, guid: f9e2e056450714cc4aefdad61845cf92,
     type: 3}
   plantSprite: {fileID: 21300000, guid: 4f0e0f88fe82645a596a936e037776b6, type: 3}
+  scale: {x: 0.1, y: 0.1, z: 0.1}
+  rotation: {x: 270, y: 180, z: 0}
