@@ -3454,6 +3454,7 @@ MonoBehaviour:
   venus: {fileID: 219828818}
   wellington: {fileID: 1432886339}
   sprout: {fileID: 2025912641}
+  kirbs: {fileID: 1151429841}
 --- !u!4 &1246649984
 Transform:
   m_ObjectHideFlags: 0
