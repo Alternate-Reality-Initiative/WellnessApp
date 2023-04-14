@@ -91,9 +91,7 @@ public class LoadTasks : MonoBehaviour
             GameObject newTask = GameObject.Instantiate(daily, DailyParent.transform);
             ListenToggle tog = newTask.GetComponent<ListenToggle>();
             tog.myToggle.isOn = _player.completedDailyTasks[i];
-            if (tog.myToggle.isOn) {
-                _player.waterLevel +=3;
-            }
+            
             tog.myToggle.interactable = !(_player.completedDailyTasks[i]);
             tog.index = i;
             
@@ -107,11 +105,6 @@ public class LoadTasks : MonoBehaviour
             GameObject newTaskWeekly = GameObject.Instantiate(weekly, WeeklyParent.transform);
             ListenToggleWeekly tog2 = newTaskWeekly.GetComponent<ListenToggleWeekly>();
             tog2.myToggle.isOn = _player.completedWeeklyTasks[i];
-            // Debug.Log("Water Level Before" + _player.waterLevel);
-            if (tog2.myToggle.isOn) {
-                _player.waterLevel +=5;
-                // Debug.Log("Water Level After" + _player.waterLevel);
-            }
             
             tog2.myToggle.interactable = !(_player.completedWeeklyTasks[i]);
             tog2.index = i;

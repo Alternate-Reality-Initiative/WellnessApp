@@ -19,7 +19,10 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public const int NUM_PLANTS = 10;
+    [HideInInspector]
     public const int SPROUT_INDEX = 4;
+    public const int WATER_REWARD_FOR_DAILY = 3;
+    public const int WATER_REWARD_FOR_WEEKLY = 5;
     // public days_passed daysPassed;
 
     public void SavePlayer()
@@ -78,7 +81,6 @@ public class Player : MonoBehaviour
         unlockedPlants = data.unlockedPlants;
 
         previous = data.previous;
-        Debug.Log("prev initial" + previous);
         if (previous == "") {
             previous =  System.DateTime.UtcNow.ToLocalTime().ToString();
         }

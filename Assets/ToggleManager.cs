@@ -5,27 +5,24 @@ using UnityEngine;
 public class ToggleManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    Player player;
+    private Player player;
+    private waterText waterText;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
+        waterText = GameObject.Find("waterText").GetComponent<waterText>();
     }
 
     public void SaveCompletedTask(int index){
-        //player.completedDailyTasks.Add(index);
-        Debug.Log(index);
         player.completedDailyTasks[index] = true;
+        player.waterLevel += Player.WATER_REWARD_FOR_DAILY;
+        waterText.UpdateWaterText();
     }
 
     public void SaveCompletedWeeklyTask(int index){
-        //player.completedDailyTasks.Add(index);
-        Debug.Log(index);
         player.completedWeeklyTasks[index] = true;
+        player.waterLevel += Player.WATER_REWARD_FOR_WEEKLY;
+        waterText.UpdateWaterText();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

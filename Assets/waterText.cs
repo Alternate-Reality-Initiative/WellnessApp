@@ -6,12 +6,16 @@ using TMPro;
 public class waterText : MonoBehaviour
 {
     public TextMeshProUGUI waterCounter;
-    // Start is called before the first frame update
-      Player _player;
+    Player _player;
+
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
-        waterCounter.text = _player.waterLevel.ToString();
+        UpdateWaterText();
+    }
+
+    public void UpdateWaterText() {
+      waterCounter.text = _player.waterLevel.ToString();
     }
 
     // Update is called once per frame

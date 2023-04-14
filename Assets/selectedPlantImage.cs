@@ -112,7 +112,7 @@ public class selectedPlantImage : MonoBehaviour
             wellington.SetActive (false);
             sprout.SetActive (false);
         }
-        else if (_player.selectedPlant == 2) {
+        else if (_player.selectedPlant == 8) {
             arabella.SetActive (false);
             amongus.SetActive (false); 
             blocky.SetActive (false); 
@@ -123,7 +123,7 @@ public class selectedPlantImage : MonoBehaviour
             wellington.SetActive (true);
             sprout.SetActive (false);
         }
-        else if (_player.selectedPlant == 2) {
+        else if (_player.selectedPlant == 9) {
             arabella.SetActive (false);
             amongus.SetActive (false); 
             blocky.SetActive (false); 
