@@ -7,15 +7,20 @@ public class LoadTasks : MonoBehaviour
 {
     // Start is called before the first frame update
     //Object[] taskArr;
-    public GameObject taskToGenerate; 
+    public GameObject daily; 
+    public GameObject weekly;
 
     public elapsedtime dayChange;
-    public GameObject myParent;
+    public week weekChange;
+    public GameObject DailyParent;
+    public GameObject WeeklyParent;
 
     public TextMeshProUGUI debugText;
-    List<TaskScriptableObject> TaskArr; 
+    List<TaskScriptableObject> TaskArrDaily; 
+    List<TaskScriptableObject> TaskArrWeekly; 
     Player _player;
     private List<int> localTasks = new List<int>(5);
+    private List<int> localWeeklyTasks = new List<int>(5);
     
     //int[] arr = {1,2};
     void Start()
@@ -28,14 +33,18 @@ public class LoadTasks : MonoBehaviour
         //TaskScriptableObject[] taskArr = Resources.LoadAll("Tasks") as TaskScriptableObject[];
         _player = GameObject.Find("Player").GetComponent<Player>();
         dayChange = GameObject.Find("DayChange").GetComponent<elapsedtime>();
+        weekChange = GameObject.Find("weekChange").GetComponent<week>();
 
         //edit player data so that the new info comes in everyday
 
-        TaskArr = new List<TaskScriptableObject>();
-        TaskArr = Resources.LoadAll<TaskScriptableObject>("Tasks").Cast<TaskScriptableObject>().ToList();
+        TaskArrDaily = new List<TaskScriptableObject>();
+        TaskArrDaily = Resources.LoadAll<TaskScriptableObject>("Tasks").Cast<TaskScriptableObject>().ToList();
+
+        TaskArrWeekly = new List<TaskScriptableObject>();
+        TaskArrWeekly = Resources.LoadAll<TaskScriptableObject>("WeeklyTasks").Cast<TaskScriptableObject>().ToList();
         // _player.tasks = new int[8];
 
-        Debug.Log(TaskArr.Count);
+        Debug.Log("Weekly count " + TaskArrWeekly.Count);
         // for (int i = 0; i < 3; i++) {
         //     int task = Random.Range(0, TaskArr.Count);
         //     _player.tasks[i] = task;
@@ -50,9 +59,9 @@ public class LoadTasks : MonoBehaviour
             localTasks.Clear();
 
             for (int i = 0; i < 5; i++) {
-                int task = Random.Range(0, TaskArr.Count);
+                int task = Random.Range(0, TaskArrDaily.Count);
                  while (localTasks.Contains(task)) {
-                    task = Random.Range(0, TaskArr.Count);
+                    task = Random.Range(0, TaskArrDaily.Count);
                  }
                  localTasks.Add(task);
                  _player.tasks[i] = task;
@@ -62,34 +71,74 @@ public class LoadTasks : MonoBehaviour
             _player.numDaysSinceDownload += 1; 
         }
 
+        if (weekChange.newWeek || _player.numDaysSinceDownload == 0) {
+
+            localWeeklyTasks.Clear();
+
+            for (int i = 0; i < 5; i++) {
+                int taskW = Random.Range(0, TaskArrWeekly.Count);
+                Debug.Log("task" + taskW);
+                 while (localWeeklyTasks.Contains(taskW)) {
+                    taskW = Random.Range(0, TaskArrWeekly.Count);
+                    Debug.Log("Goes into while loop iteration : " + i);
+                 }
+                 localWeeklyTasks.Add(taskW);
+                 _player.weeklyTasks[i] = taskW;
+            }
+        }
+
         for(int i = 0; i<5; i++){
-            GameObject newTask = GameObject.Instantiate(taskToGenerate, myParent.transform);
+            GameObject newTask = GameObject.Instantiate(daily, DailyParent.transform);
             ListenToggle tog = newTask.GetComponent<ListenToggle>();
             tog.myToggle.isOn = _player.completedDailyTasks[i];
+            if (tog.myToggle.isOn) {
+                _player.waterLevel +=3;
+            }
             tog.myToggle.interactable = !(_player.completedDailyTasks[i]);
             tog.index = i;
             
             GameObject header = newTask.transform.GetChild(0).gameObject;
             GameObject taskDescript = newTask.transform.GetChild(1).gameObject;
-            header.GetComponent<TextMeshProUGUI>().text = TaskArr[_player.tasks[i]].taskName;
-            taskDescript.GetComponent<TextMeshProUGUI>().text = TaskArr[_player.tasks[i]].description;
+            header.GetComponent<TextMeshProUGUI>().text = TaskArrDaily[_player.tasks[i]].taskName;
+            taskDescript.GetComponent<TextMeshProUGUI>().text = TaskArrDaily[_player.tasks[i]].description;
         }
+
+        for(int i = 0; i<5; i++){
+            GameObject newTaskWeekly = GameObject.Instantiate(weekly, WeeklyParent.transform);
+            ListenToggleWeekly tog2 = newTaskWeekly.GetComponent<ListenToggleWeekly>();
+            tog2.myToggle.isOn = _player.completedWeeklyTasks[i];
+            // Debug.Log("Water Level Before" + _player.waterLevel);
+            if (tog2.myToggle.isOn) {
+                _player.waterLevel +=5;
+                // Debug.Log("Water Level After" + _player.waterLevel);
+            }
+            
+            tog2.myToggle.interactable = !(_player.completedWeeklyTasks[i]);
+            tog2.index = i;
+            
+            GameObject headerWeekly = newTaskWeekly.transform.GetChild(0).gameObject;
+            GameObject taskDescriptWeekly = newTaskWeekly.transform.GetChild(1).gameObject;
+            Debug.Log(_player.weeklyTasks[i]);
+            headerWeekly.GetComponent<TextMeshProUGUI>().text = TaskArrWeekly[_player.weeklyTasks[i]].taskName;
+            taskDescriptWeekly.GetComponent<TextMeshProUGUI>().text = TaskArrWeekly[_player.weeklyTasks[i]].description;
+        }
+
   
     }
 
     public void DebugReRollOnClick() {
 
-        for (int i = 0; i < myParent.transform.childCount; i++) {
-            GameObject.Destroy(myParent.transform.GetChild(i).gameObject);
+        for (int i = 0; i < DailyParent.transform.childCount; i++) {
+            GameObject.Destroy(DailyParent.transform.GetChild(i).gameObject);
         }
 
         localTasks.Clear();
 
         for (int i = 0; i < 5; i++) {
-            int task = Random.Range(0, TaskArr.Count);
+            int task = Random.Range(0, TaskArrDaily.Count);
             //  _player.tasks[i] = task;
             while (localTasks.Contains(task)) {
-                task = Random.Range(0, TaskArr.Count);
+                task = Random.Range(0, TaskArrDaily.Count);
             }
             localTasks.Add(task);
             _player.tasks[i] = task;
@@ -97,12 +146,12 @@ public class LoadTasks : MonoBehaviour
 
 
         for(int i = 0; i< 5; i++){
-            GameObject newTask = GameObject.Instantiate(taskToGenerate, myParent.transform);
+            GameObject newTask = GameObject.Instantiate(daily, DailyParent.transform);
             newTask.GetComponent<ListenToggle>().index = i;
             GameObject header = newTask.transform.GetChild(0).gameObject;
             GameObject taskDescript = newTask.transform.GetChild(1).gameObject;
-            header.GetComponent<TextMeshProUGUI>().text = TaskArr[_player.tasks[i]].taskName;
-            taskDescript.GetComponent<TextMeshProUGUI>().text = TaskArr[_player.tasks[i]].description;
+            header.GetComponent<TextMeshProUGUI>().text = TaskArrDaily[_player.tasks[i]].taskName;
+            taskDescript.GetComponent<TextMeshProUGUI>().text = TaskArrDaily[_player.tasks[i]].description;
         }
 
         for (int i = 0; i < 5; i++) {

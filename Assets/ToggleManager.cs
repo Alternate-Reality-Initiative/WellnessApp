@@ -15,7 +15,12 @@ public class ToggleManager : MonoBehaviour
         //player.completedDailyTasks.Add(index);
         Debug.Log(index);
         player.completedDailyTasks[index] = true;
-        
+    }
+
+    public void SaveCompletedWeeklyTask(int index){
+        //player.completedDailyTasks.Add(index);
+        Debug.Log(index);
+        player.completedWeeklyTasks[index] = true;
     }
 
     // Update is called once per frame

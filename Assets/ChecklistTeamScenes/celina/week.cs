@@ -15,7 +15,7 @@ public class week : MonoBehaviour
     public bool newWeek;
 
     //detects new week that starts Sunday
-    void Awake(){
+    void Start(){
         //mesh_renderer = gameObject.GetComponent<MeshRenderer>();
 
         day = CultureInfo.InvariantCulture.Calendar;
