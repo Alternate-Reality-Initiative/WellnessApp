@@ -75,18 +75,7 @@ public class Player : MonoBehaviour
         }
 
 
-        // unlockedPlants = data.unlockedPlants;
-        // int unlockSum = 0;
-        // for (int i = 0; i < NUM_PLANTS; i++) {
-        //     if (unlockedPlants[i] == true) {
-        //         unlockSum++;
-        //     }
-        // }
-        // if (unlockSum == 0) {
-        //     unlockedPlants = new bool[NUM_PLANTS];
-        //     unlockedPlants[SPROUT_INDEX] = true;
-        //     selectedPlant = SPROUT_INDEX;
-        // }
+        unlockedPlants = data.unlockedPlants;
 
         previous = data.previous;
         Debug.Log("prev initial" + previous);
