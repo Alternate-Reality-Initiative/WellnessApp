@@ -78,6 +78,9 @@ public class hideAndShow : MonoBehaviour
 
       // hide this menu
       HidePromptOnClick();
+
+      // update water counter
+      GameObject.Find("watertext").GetComponent<waterText>().UpdateWaterText();
     }
   }
   
