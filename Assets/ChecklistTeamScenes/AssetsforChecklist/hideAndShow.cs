@@ -30,8 +30,10 @@ public class hideAndShow : MonoBehaviour
 
     for(int i = 0; i < Player.NUM_PLANTS; i++) {
       if (player.unlockedPlants[i] == true) {
-        plantParent.transform.GetChild(i).Find("LockedPlant").gameObject.SetActive(false);
-        plantParent.transform.GetChild(i).GetComponent<InventoryScript>().isUnlocked = true;
+        Transform plantCard = plantParent.transform.GetChild(i);
+        plantCard.Find("LockedPlant").gameObject.SetActive(false);
+        plantCard.GetComponent<InventoryScript>().isUnlocked = true;
+        plantCard.GetComponent<InventoryScript>().SetUpHeart(player.plantHealth[i]);
       }
     }
   }
@@ -67,7 +69,11 @@ public class hideAndShow : MonoBehaviour
       player.selectedPlant = indexOfPlantInPrompt;
 
       // set to unlocked in script sitting on card in collection
-      plantParent.transform.GetChild(player.selectedPlant).GetComponent<InventoryScript>().isUnlocked = true;
+      // set up heart
+      InventoryScript inventoryScript = plantParent.transform.GetChild(player.selectedPlant).GetComponent<InventoryScript>();
+      inventoryScript.isUnlocked = true;
+      player.plantHealth[indexOfPlantInPrompt] = 3; // set health to 3 on unlock
+      inventoryScript.SetUpHeart(player.plantHealth[indexOfPlantInPrompt]);
 
       // hide gray locked art
       RemoveLockedImage(player.selectedPlant);
@@ -127,5 +133,6 @@ public class hideAndShow : MonoBehaviour
 
   public void ResetWaterOnClick() {
     player.waterLevel = 10;
+    GameObject.Find("watertext").GetComponent<waterText>().UpdateWaterText();
   }
 }

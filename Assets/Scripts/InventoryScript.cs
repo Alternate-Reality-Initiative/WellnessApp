@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InventoryScript : MonoBehaviour
 {
     public int index;
+    public GameObject heart;
+    public TextMeshProUGUI heartText;
     private hideAndShow hideAndShow;
     private GameObject myBg;
     [HideInInspector]
@@ -19,6 +22,7 @@ public class InventoryScript : MonoBehaviour
         if (hideAndShow == null) {
             Debug.LogError("Collection item could not resolve hide and show reference");
         } 
+
     }
 
     public void OnClick() {
@@ -28,5 +32,10 @@ public class InventoryScript : MonoBehaviour
             // show unlock prompt
             hideAndShow.ShowPrompt(index);
         }
+    }
+
+    public void SetUpHeart(int health) {
+        heart.SetActive(true);
+        heartText.text = health.ToString();
     }
 }
