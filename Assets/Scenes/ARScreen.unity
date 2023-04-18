@@ -2385,10 +2385,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handPositionSolver: {fileID: 1374885627}
-  speedMovement: 0.5
   speedRotation: 25
   _player: {fileID: 1759418960}
-  emptyPot: {fileID: 919132149155446097, guid: ea613641b8ec3f0499222c63f7546845, type: 3}
+  emptyPot: {fileID: 8058647917647610854, guid: a02c35b5ed675a0438b1963ede6f915e,
+    type: 3}
   arObject: {fileID: 0}
 --- !u!114 &1374885627
 MonoBehaviour:
