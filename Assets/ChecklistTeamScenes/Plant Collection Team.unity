@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -595,12 +595,12 @@ PrefabInstance:
     - target: {fileID: 645517693543268255, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 34
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 645517693543268255, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107
+      value: -118
       objectReference: {fileID: 0}
     - target: {fileID: 841479006847906294, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -657,6 +657,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151828671257779237, guid: 7582c1b0ab7c94639a21fe5015d48a10,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2769733003802504084, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -1142,7 +1147,7 @@ PrefabInstance:
     - target: {fileID: 645517693543268255, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 841479006847906294, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -1452,7 +1457,7 @@ PrefabInstance:
     - target: {fileID: 645517693543268255, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 841479006847906294, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -1481,6 +1486,11 @@ PrefabInstance:
       value: 'Sprout
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151828671257779237, guid: 7582c1b0ab7c94639a21fe5015d48a10,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2769733003802504084, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -1947,7 +1957,7 @@ PrefabInstance:
     - target: {fileID: 645517693543268255, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 13
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 841479006847906294, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -1974,6 +1984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Inwe
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151828671257779237, guid: 7582c1b0ab7c94639a21fe5015d48a10,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2769733003802504084, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -2649,6 +2664,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1165699064}
     m_Modifications:
+    - target: {fileID: 645517693543268255, guid: 7582c1b0ab7c94639a21fe5015d48a10,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 841479006847906294, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2684,6 +2704,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Kirbs
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151828671257779237, guid: 7582c1b0ab7c94639a21fe5015d48a10,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2769733003802504084, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -2946,7 +2971,7 @@ PrefabInstance:
     - target: {fileID: 645517693543268255, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 841479006847906294, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -3000,6 +3025,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: -2.3509521
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151828671257779237, guid: 7582c1b0ab7c94639a21fe5015d48a10,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2769733003802504084, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -3498,7 +3528,7 @@ PrefabInstance:
     - target: {fileID: 645517693543268255, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 841479006847906294, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -3547,6 +3577,11 @@ PrefabInstance:
       value: 'Wellington
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151828671257779237, guid: 7582c1b0ab7c94639a21fe5015d48a10,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2769733003802504084, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
@@ -5375,6 +5410,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1165699064}
     m_Modifications:
+    - target: {fileID: 645517693543268255, guid: 7582c1b0ab7c94639a21fe5015d48a10,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 841479006847906294, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -5402,6 +5442,11 @@ PrefabInstance:
       value: 'Tootsie
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151828671257779237, guid: 7582c1b0ab7c94639a21fe5015d48a10,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2769733003802504084, guid: 7582c1b0ab7c94639a21fe5015d48a10,
         type: 3}

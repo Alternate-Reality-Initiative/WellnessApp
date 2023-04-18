@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5f6b1fb620c924da9a7fdce9a2a06d, type: 3}
   m_Name: WhiteFlower
   m_EditorClassIdentifier: 
-  name: White Flower?
+  name: Guppers
   desc: Breath of fresh air
   plantObject: {fileID: 8846503636879968817, guid: c3d595d14c61d03429b71cddd12063b9,
     type: 3}
