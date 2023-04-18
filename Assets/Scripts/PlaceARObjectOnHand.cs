@@ -41,10 +41,10 @@ public class PlaceARObjectOnHand : MonoBehaviour
         {
             GameObject plantModel = plant.plantObject;
             arObject = Instantiate(plantModel, new Vector3(0, 0, 5), Quaternion.Euler(new Vector3(-90, 0, 0)));
+            arObject.transform.localScale = plant.scale;
+            arObject.transform.Rotate(plant.rotation);
         }
         
-        arObject.transform.localScale = plant.scale;
-        arObject.transform.Rotate(plant.rotation);
     }
 
     //Update is called once per frame
