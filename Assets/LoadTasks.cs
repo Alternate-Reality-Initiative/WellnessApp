@@ -121,15 +121,17 @@ public class LoadTasks : MonoBehaviour
 
     public void DebugReRollOnClick() {
 
+        // destroy prefabs
         for (int i = 0; i < DailyParent.transform.childCount; i++) {
             GameObject.Destroy(DailyParent.transform.GetChild(i).gameObject);
         }
 
+        // clear list
         localTasks.Clear();
 
+        // generate new tasks
         for (int i = 0; i < 5; i++) {
             int task = Random.Range(0, TaskArrDaily.Count);
-            //  _player.tasks[i] = task;
             while (localTasks.Contains(task)) {
                 task = Random.Range(0, TaskArrDaily.Count);
             }
@@ -137,8 +139,8 @@ public class LoadTasks : MonoBehaviour
             _player.tasks[i] = task;
         }
 
-
-        for(int i = 0; i< 5; i++){
+        // spawn new prefabs
+        for(int i = 0; i < 5; i++){
             GameObject newTask = GameObject.Instantiate(daily, DailyParent.transform);
             newTask.GetComponent<ListenToggle>().index = i;
             GameObject header = newTask.transform.GetChild(0).gameObject;
@@ -147,15 +149,16 @@ public class LoadTasks : MonoBehaviour
             taskDescript.GetComponent<TextMeshProUGUI>().text = TaskArrDaily[_player.tasks[i]].description;
         }
 
+        // repopulate local list
         for (int i = 0; i < 5; i++) {
             localTasks[i] = _player.tasks[i];
         }
-  
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // reset save data for which tasks you've already completed
+        for (int i = 0; i < 30; i++) {
+            _player.completedDailyTasks[i] = false;
+            _player.completedWeeklyTasks[i] = false;
+        }
+  
     }
 }

@@ -57,6 +57,26 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6943183137108001975, guid: 432fe206c3a29442f9f0c01f78fcef66,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 157.0796
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943183137108001975, guid: 432fe206c3a29442f9f0c01f78fcef66,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943183137108001975, guid: 432fe206c3a29442f9f0c01f78fcef66,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.4602
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943183137108001975, guid: 432fe206c3a29442f9f0c01f78fcef66,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6943183137385809798, guid: 432fe206c3a29442f9f0c01f78fcef66,
         type: 3}
       propertyPath: m_Pivot.x
