@@ -17,27 +17,45 @@ public class PlaceARObjectOnHand : MonoBehaviour
 
     public Player _player;
     private int _plantIndex;
-    private int currentHealth;
+    private int startingHealth;
     public GameObject emptyPot;
 
     public GameObject arObject; 
-    List<PlantScriptableObject> plantArr; 
+    List<PlantScriptableObject> plantArr;
+
+    private bool changeOncePot;
+    private bool changeOncePlant;
 
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
         _plantIndex = _player.selectedPlant;
-        currentHealth = _player.plantHealth[_plantIndex];
+        startingHealth = _player.plantHealth[_plantIndex];
         plantArr = new List<PlantScriptableObject>();
         plantArr = Resources.LoadAll<PlantScriptableObject>("Plant SO").Cast<PlantScriptableObject>().ToList();
         
         plant = plantArr[_plantIndex];
-        
-        if (currentHealth == 0)
+
+        changeOncePot = true;
+        changeOncePlant = true;
+
+        SetPlantObject();
+    }
+
+    //Update is called once per frame
+    void Update()
+    {
+        UpdatePlantObject();
+        PlaceObjectOnHand(handPositionSolver.HandPosition);
+    }
+
+    void SetPlantObject()
+    {
+        if (startingHealth == 0)
         {
             arObject = Instantiate(emptyPot, new Vector3(0, 0, 5), Quaternion.Euler(new Vector3(-90, 0, 0)));
             arObject.transform.localScale = new Vector3(6, 6, 264);
-        }   
+        }
         else
         {
             GameObject plantModel = plant.plantObject;
@@ -47,10 +65,26 @@ public class PlaceARObjectOnHand : MonoBehaviour
         }
     }
 
-    //Update is called once per frame
-    void Update()
+    void UpdatePlantObject()
     {
-        PlaceObjectOnHand(handPositionSolver.HandPosition);
+        if (_player.plantHealth[_plantIndex] == 0 && changeOncePot)
+        {
+            Destroy(arObject);
+            arObject = Instantiate(emptyPot, new Vector3(0, 0, 5), Quaternion.Euler(new Vector3(-90, 0, 0)));
+            arObject.transform.localScale = new Vector3(6, 6, 264);
+            changeOncePot = false;
+            changeOncePlant = true;
+        }
+        else if (_player.plantHealth[_plantIndex] != 0 && changeOncePlant)
+        {
+            Destroy(arObject);
+            GameObject plantModel = plant.plantObject;
+            arObject = Instantiate(plantModel, new Vector3(0, 0, 5), Quaternion.Euler(new Vector3(-90, 0, 0)));
+            arObject.transform.localScale = plant.scale;
+            arObject.transform.Rotate(plant.rotation);
+            changeOncePot = true;
+            changeOncePlant = false;
+        }
     }
 
     private void PlaceObjectOnHand(Vector3 handPosition)

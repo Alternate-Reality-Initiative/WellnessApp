@@ -26,13 +26,12 @@ public class PlantIcon : MonoBehaviour
         plantArr = new List<PlantScriptableObject>();
         plantArr = Resources.LoadAll<PlantScriptableObject>("Plant SO").Cast<PlantScriptableObject>().ToList();
         plantName = plantArr[_player.selectedPlant].name;
-        UpdateIcon();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateIcon();
     }
 
     void UpdateIcon()
