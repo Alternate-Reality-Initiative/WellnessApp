@@ -36,7 +36,8 @@ public class PlaceARObjectOnHand : MonoBehaviour
         if (currentHealth == 0)
         {
             arObject = Instantiate(emptyPot, new Vector3(0, 0, 5), Quaternion.Euler(new Vector3(-90, 0, 0)));
-        }
+            arObject.transform.localScale = new Vector3(6, 6, 264);
+        }   
         else
         {
             GameObject plantModel = plant.plantObject;
@@ -44,7 +45,6 @@ public class PlaceARObjectOnHand : MonoBehaviour
             arObject.transform.localScale = plant.scale;
             arObject.transform.Rotate(plant.rotation);
         }
-        
     }
 
     //Update is called once per frame
