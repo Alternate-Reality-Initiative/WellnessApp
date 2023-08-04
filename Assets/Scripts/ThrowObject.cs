@@ -36,6 +36,8 @@ public class ThrowObject : MonoBehaviour
     public TextMeshProUGUI promptWaterCost;
     private List<PlantScriptableObject> plantArr;
 
+    private HealthDisplay healthDisplay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,9 +55,10 @@ public class ThrowObject : MonoBehaviour
         plantArr = Resources.LoadAll<PlantScriptableObject>("Plant SO").Cast<PlantScriptableObject>().ToList();
 
 
-        //_player.waterLevel = int.Parse(_waterCounter.text);
         _waterCounter.text = _player.waterLevel.ToString();
-        //Debug.Log(_player.waterLevel);
+
+        healthDisplay = GameObject.Find("UIManager").GetComponent<HealthDisplay>();
+
     }
 
     //This function will be called when a new AR Session has been created, as we instructed our 'ARSessionFactory' earlier
@@ -92,11 +95,12 @@ public class ThrowObject : MonoBehaviour
             _player.waterLevel--; // decrement the player's water level
             _waterCounter.text = _player.waterLevel.ToString(); // display new water level
 
-            //Debug.Log(_player.waterLevel);
+            _player.plantHealth[_player.selectedPlant] = (int)MathF.Min(3, _player.plantHealth[_player.selectedPlant] + 1);
+            healthDisplay.setHearts();
+
         }
         else if (plantHealths[plantIndex] == 0) // revive button
         {
-            Debug.Log("hi");
             ShowPrompt();
         }
         //else if (_player.waterLevel == 0)             // FOR TESTING
@@ -119,7 +123,6 @@ public class ThrowObject : MonoBehaviour
     //}
     private void ShowPrompt()
     {
-        Debug.Log("hello");
         promptPanel.SetActive(true);
 
         PlantScriptableObject plantInfo = plantArr[plantIndex];
@@ -149,7 +152,7 @@ public class ThrowObject : MonoBehaviour
             _player.waterLevel -= 5;
             _waterCounter.text = _player.waterLevel.ToString();
             _player.plantHealth[plantIndex] = 3; // revive the selected plant's health back to 3
-
+            healthDisplay.setHearts();
             // hide this menu
             HidePrompt();
 

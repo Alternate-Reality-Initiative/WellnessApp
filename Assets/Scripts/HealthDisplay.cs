@@ -19,10 +19,7 @@ public class HealthDisplay : MonoBehaviour
         _player = GameObject.Find("Player").GetComponent<Player>();
         plantHealths = _player.plantHealth;
         plantIndex = _player.selectedPlant;
-    }
-      
-    public void Update()
-    {
+
         setHearts();
     }
 
