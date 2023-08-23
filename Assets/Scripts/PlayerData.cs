@@ -13,9 +13,11 @@ public class PlayerData
     public bool[] completedWeeklyTasks;
     public int selectedPlant;
     public int[] plantHealth;
+    public int[] surplusWater;
     public bool[] unlockedPlants;
     public string previous; 
     public int numDaysSinceDownload;
+    public int[] daysNotWatered;
     
     public PlayerData (Player player){
         name = player.name;
@@ -26,9 +28,11 @@ public class PlayerData
         completedWeeklyTasks = player.completedWeeklyTasks;
         selectedPlant = player.selectedPlant;
         plantHealth = player.plantHealth;
+        surplusWater = player.surplusWater;
         unlockedPlants = player.unlockedPlants;
         previous = player.previous;
         numDaysSinceDownload = player.numDaysSinceDownload;
+        daysNotWatered = player.daysNotWatered;
     }
     
     public PlayerData() { // DEFAULT CONSTRUCTOR
@@ -43,6 +47,10 @@ public class PlayerData
         for (int i = 0; i < Player.NUM_PLANTS; i++) {
             plantHealth[i] = 3;
         }
+        surplusWater = new int[Player.NUM_PLANTS];
+        for (int i = 0; i < Player.NUM_PLANTS; i++) {
+            surplusWater[i] = 0;
+        }
         unlockedPlants = new bool[Player.NUM_PLANTS];
         for (int i = 0; i < Player.NUM_PLANTS; i++) {
             unlockedPlants[i] = false;
@@ -50,6 +58,11 @@ public class PlayerData
         unlockedPlants[Player.SPROUT_INDEX] = true;
         previous = System.DateTime.UtcNow.ToLocalTime().ToString();
         numDaysSinceDownload = 0;
+
+        daysNotWatered = new int[Player.NUM_PLANTS];
+        for (int i = 0; i < Player.NUM_PLANTS; i++) {
+            daysNotWatered[i] = 0;
+        }
     }
 
     // Update is called once per frame

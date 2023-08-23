@@ -13,16 +13,18 @@ public class Player : MonoBehaviour
     public bool[] completedWeeklyTasks;
     public int selectedPlant;
     public int[] plantHealth;
+    public int[] surplusWater;
     public bool[] unlockedPlants; //plant id numbers
     public string previous;
     public int numDaysSinceDownload;
+    public int[] daysNotWatered;
 
     [HideInInspector]
     public const int NUM_PLANTS = 10;
     [HideInInspector]
     public const int SPROUT_INDEX = 4;
-    public const int WATER_REWARD_FOR_DAILY = 3;
-    public const int WATER_REWARD_FOR_WEEKLY = 5;
+    public const int WATER_REWARD_FOR_DAILY = 1;
+    public const int WATER_REWARD_FOR_WEEKLY = 3;
     // public days_passed daysPassed;
 
     public void SavePlayer()
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
         name = data.name;
         waterLevel = data.waterL;
         numDaysSinceDownload = data.numDaysSinceDownload;
+        
         
         tasks = data.tasks;
         if (tasks.Length == 0) {
@@ -65,6 +68,20 @@ public class Player : MonoBehaviour
         if (plantHealth.Length == 0) {
             plantHealth = new int[NUM_PLANTS];
             Array.Fill(plantHealth,3);
+        }
+
+        surplusWater = data.surplusWater;
+        
+        if (surplusWater.Length == 0) {
+            surplusWater = new int[NUM_PLANTS];
+            Array.Fill(surplusWater,0);
+        }
+
+        daysNotWatered = data.daysNotWatered;
+
+        if (daysNotWatered.Length == 0) {
+            daysNotWatered = new int[NUM_PLANTS];
+            Array.Fill(daysNotWatered,0);
         }
         int healthSum = 0;
         for (int i = 0; i < NUM_PLANTS; i++) {

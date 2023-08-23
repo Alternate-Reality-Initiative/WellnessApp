@@ -38,6 +38,9 @@ public class ThrowObject : MonoBehaviour
 
     private HealthDisplay healthDisplay;
 
+    private int wateredOnce=0;
+    public elapsedtime newDayTrue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,9 +74,22 @@ public class ThrowObject : MonoBehaviour
         _ARsession = args.Session;
     }
 
+    public void checkDailyWater(){ //this function checks to see if the player has watered the plant that day
+        if(_player.daysNotWatered[_player.selectedPlant] == 0){
+            _player.surplusWater[_player.selectedPlant]++;
+        }
+        else{
+            _player.surplusWater[_player.selectedPlant] -= _player.daysNotWatered[_player.selectedPlant];
+        }
+        _player.daysNotWatered[_player.selectedPlant] = 0;
+        Debug.Log(_player.surplusWater[_player.selectedPlant]);
+        
+    }
+
     //This function will be called when the player touches the screen. For us, we'll have this trigger the shooting of our object from where we touch.
     public void ClickButton()
     {
+        wateredOnce++;
         if (_player.waterLevel > 0 && plantHealths[plantIndex] > 0) { // water button
             System.Random rnd = new System.Random();
             var radius = .2;
@@ -94,6 +110,7 @@ public class ThrowObject : MonoBehaviour
 
             _player.waterLevel--; // decrement the player's water level
             _waterCounter.text = _player.waterLevel.ToString(); // display new water level
+            checkDailyWater();
 
             _player.plantHealth[_player.selectedPlant] = (int)MathF.Min(3, _player.plantHealth[_player.selectedPlant] + 1);
             healthDisplay.setHearts();
