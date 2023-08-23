@@ -54,8 +54,9 @@ public class LoadTasks : MonoBehaviour
         //debugText.text = "num days since dl: " + _player.numDaysSinceDownload;
       
         // int task = Random.Range(0, taskObjects.Length);
-        if (dayChange.newDay || _player.numDaysSinceDownload == 0) {
-           
+        if (_player.newDay || _player.numDaysSinceDownload == 0) {
+            Debug.Log("days since download" + _player.numDaysSinceDownload);
+            _player.completedDailyTasks = Enumerable.Repeat(false, _player.completedDailyTasks.Length).ToArray();
             localTasks.Clear();
 
             for (int i = 0; i < 5; i++) {
@@ -74,7 +75,7 @@ public class LoadTasks : MonoBehaviour
         if (weekChange.newWeek || _player.numDaysSinceDownload == 0) {
 
             localWeeklyTasks.Clear();
-
+            _player.completedWeeklyTasks = Enumerable.Repeat(false, _player.completedWeeklyTasks.Length).ToArray();
             for (int i = 0; i < 5; i++) {
                 int taskW = Random.Range(0, TaskArrWeekly.Count);
                 Debug.Log("task" + taskW);

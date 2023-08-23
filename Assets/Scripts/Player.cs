@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public string previous;
     public int numDaysSinceDownload;
     public int[] daysNotWatered;
+    public bool newDay;
 
     [HideInInspector]
     public const int NUM_PLANTS = 10;
@@ -35,33 +36,47 @@ public class Player : MonoBehaviour
 
     public void LoadPlayer()
     {
+        //Debug.Log("inside load player player script");
         PlayerData data = SaveSystem.LoadPlayer();
+
+        // if(data == null){
+        //     Debug.Log("data is null");
+        // }
+        // else{
+        //     Debug.Log("data is fine");
+        // }
+       
         name = data.name;
+  
         waterLevel = data.waterL;
+  
         numDaysSinceDownload = data.numDaysSinceDownload;
         
-        
+
         tasks = data.tasks;
         if (tasks.Length == 0) {
             tasks = new int[NUM_PLANTS];
         }
-
+   
         completedDailyTasks = data.completedDailyTasks;
         if (completedDailyTasks.Length == 0) {
             completedDailyTasks = new bool[NUM_PLANTS];
         }
-
+       
         weeklyTasks = data.weeklyTasks;
         if (weeklyTasks.Length == 0) {
             weeklyTasks = new int[NUM_PLANTS];
         }
 
+       
         completedWeeklyTasks = data.completedWeeklyTasks;
         if (completedWeeklyTasks.Length == 0) {
             completedWeeklyTasks = new bool[NUM_PLANTS];
         }
 
+
         selectedPlant = data.selectedPlant;
+        
         
         plantHealth = data.plantHealth;
         
@@ -69,7 +84,7 @@ public class Player : MonoBehaviour
             plantHealth = new int[NUM_PLANTS];
             Array.Fill(plantHealth,3);
         }
-
+        
         surplusWater = data.surplusWater;
         
         if (surplusWater.Length == 0) {
@@ -94,12 +109,16 @@ public class Player : MonoBehaviour
             }
         }
 
-
         unlockedPlants = data.unlockedPlants;
 
         previous = data.previous;
         if (previous == "") {
-            previous =  System.DateTime.UtcNow.ToLocalTime().ToString();
+            previous =  System.DateTime.UtcNow.ToLocalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffffffZ");
+        }
+
+        newDay = data.newDay;
+        if (newDay == null) {
+            newDay = true;
         }
     }
 }

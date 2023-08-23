@@ -19,12 +19,17 @@ public class week : MonoBehaviour
         //mesh_renderer = gameObject.GetComponent<MeshRenderer>();
 
         day = CultureInfo.InvariantCulture.Calendar;
-        val = day.GetDayOfWeek(date);
-        
 
-        if (val == DayOfWeek.Monday) {
+        DayOfWeek dayOfWeek = date.DayOfWeek;
+
+        // Convert the enumeration value to a string
+        string dayOfWeekString = dayOfWeek.ToString();
+
+        Debug.Log("Day of the week: " + dayOfWeekString);
+        
+        //start of with monday and then later we can go by user's choice ?
+        if (dayOfWeek == DayOfWeek.Monday) {
             newWeek = true; 
-                 
         }
 
 
