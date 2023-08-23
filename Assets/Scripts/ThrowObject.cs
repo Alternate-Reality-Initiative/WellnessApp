@@ -82,12 +82,12 @@ public class ThrowObject : MonoBehaviour
             _player.surplusWater[_player.selectedPlant] -= _player.daysNotWatered[_player.selectedPlant];
         }
         _player.daysNotWatered[_player.selectedPlant] = 0;
-        //Debug.Log(_player.surplusWater[_player.selectedPlant]);
+        Debug.Log(_player.surplusWater[_player.selectedPlant]);
         
     }
 
     public void surplusGoalReached(){ //when the player waters the plant enough to reach next stage
-        if(_player.surplusWater[_player.selectedPlant]==3){
+        if(_player.surplusWater[_player.selectedPlant]==10){
             GameObject plantModel = plantArr[plantIndex].plantObject; //replace with actual new model
             plant = Instantiate(plantModel, new Vector3(0, 0, 5), Quaternion.Euler(new Vector3(-90, 0, 0)));
             plant.transform.localScale = new Vector3(10, 10, 10);
