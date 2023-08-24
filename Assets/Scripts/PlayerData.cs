@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 [System.Serializable]
 public class PlayerData
 {
@@ -19,6 +20,7 @@ public class PlayerData
     public int numDaysSinceDownload;
     public int[] daysNotWatered;
     public bool newDay;
+    public string[] lastWatered;
     
     public PlayerData (Player player){
         name = player.name;
@@ -35,6 +37,7 @@ public class PlayerData
         numDaysSinceDownload = player.numDaysSinceDownload;
         daysNotWatered = player.daysNotWatered;
         newDay = player.newDay;
+        lastWatered = player.lastWatered;
     }
     
     public PlayerData() { // DEFAULT CONSTRUCTOR
@@ -65,6 +68,10 @@ public class PlayerData
         daysNotWatered = new int[Player.NUM_PLANTS];
         for (int i = 0; i < Player.NUM_PLANTS; i++) {
             daysNotWatered[i] = 0;
+        }
+        lastWatered = new string[Player.NUM_PLANTS];
+        for (int i = 0; i < Player.NUM_PLANTS; i++) {
+            lastWatered[i] = "";
         }
     }
 

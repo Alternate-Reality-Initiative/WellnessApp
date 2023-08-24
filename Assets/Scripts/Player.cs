@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public int numDaysSinceDownload;
     public int[] daysNotWatered;
     public bool newDay;
+    public string[] lastWatered;
 
     [HideInInspector]
     public const int NUM_PLANTS = 10;
@@ -120,5 +121,14 @@ public class Player : MonoBehaviour
         if (newDay == null) {
             newDay = true;
         }
+
+        lastWatered = data.lastWatered;
+        if (lastWatered.Length == 0) {
+            lastWatered = new string[NUM_PLANTS];
+            for (int i = 0; i < NUM_PLANTS; i++) {
+                Array.Fill(lastWatered, "");
+            }
+        }
+        
     }
 }

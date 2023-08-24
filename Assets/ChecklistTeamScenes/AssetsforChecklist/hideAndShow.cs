@@ -11,7 +11,7 @@ public class hideAndShow : MonoBehaviour
   public GameObject plantParent;
   private GameObject currentActiveBg;
   [HideInInspector]
-  public Player player;
+  Player player;
   public GameObject promptPanel;
   public TextMeshProUGUI promptWaterCost;
   public Button spendWaterButton;

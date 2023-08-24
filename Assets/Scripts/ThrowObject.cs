@@ -41,6 +41,7 @@ public class ThrowObject : MonoBehaviour
     private int wateredOnce=0;
     public elapsedtime newDayTrue;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +62,21 @@ public class ThrowObject : MonoBehaviour
         _waterCounter.text = _player.waterLevel.ToString();
 
         healthDisplay = GameObject.Find("UIManager").GetComponent<HealthDisplay>();
+         if (_player.lastWatered[_player.selectedPlant] != "") {
+                TimeSpan daysPassed = System.DateTime.UtcNow.ToLocalTime().Date - 
+                                     (DateTime.Parse(_player.lastWatered[_player.selectedPlant])).Date;
+                if (daysPassed.Days >= 1){
+                _player.daysNotWatered[_player.selectedPlant] = daysPassed.Days;
+                if (_player.daysNotWatered[_player.selectedPlant] >= 3){
+                    _player.plantHealth[_player.selectedPlant] = 0;
+                }
+                else {
+                    _player.plantHealth[_player.selectedPlant] -= _player.daysNotWatered[_player.selectedPlant]; 
+                }
+            }
+
+        healthDisplay.setHearts();
+        }       
 
     }
 
@@ -73,8 +89,10 @@ public class ThrowObject : MonoBehaviour
         //Here we're saving our AR Session to our '_ARsession' variable, along with any arguments our session contains
         _ARsession = args.Session;
     }
+    
 
     public void checkDailyWater(){ //this function checks to see if the player has watered the plant that day
+        
         if(_player.daysNotWatered[_player.selectedPlant] == 0){
             _player.surplusWater[_player.selectedPlant]++;
         }
@@ -85,6 +103,7 @@ public class ThrowObject : MonoBehaviour
         Debug.Log(_player.surplusWater[_player.selectedPlant]);
         
     }
+    
 
     public void surplusGoalReached(){ //when the player waters the plant enough to reach next stage
         if(_player.surplusWater[_player.selectedPlant]==10){
@@ -125,8 +144,12 @@ public class ThrowObject : MonoBehaviour
             _waterCounter.text = _player.waterLevel.ToString(); // display new water level
             checkDailyWater();
             surplusGoalReached();
+            
 
             _player.plantHealth[_player.selectedPlant] = (int)MathF.Min(3, _player.plantHealth[_player.selectedPlant] + 1);
+            _player.daysNotWatered[_player.selectedPlant] = 0;
+            _player.lastWatered[_player.selectedPlant] = System.DateTime.UtcNow.ToLocalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffffffZ");
+
             healthDisplay.setHearts();
 
         }
