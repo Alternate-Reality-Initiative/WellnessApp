@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43c13f01-3068-42f1-94cc-0accb9478d12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Scripts.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Scripts.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HumanAR/HandTracking/HandTracking.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../HumanAR/HandTracking/HandTracking.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Collision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HandPositionSolver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HandPositionSolver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WaterDroplet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../WaterDroplet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../water_testing.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../water_testing.unity" afterDir="false" />
+    <list default="true" id="bfefb71f-d97b-476b-b5e0-f04e0a04f332" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../PlantModels/AshleyPlantFINAL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../PlantModels/AshleyPlantFINAL.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlantModels/Blocky_Sakura.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../PlantModels/Blocky_Sakura.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlantModels/bellaPlant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../PlantModels/bellaPlant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlantModels/default.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../PlantModels/default.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlantModels/kirbs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../PlantModels/kirbs.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlantModels/sprout.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../PlantModels/sprout.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlantModels/wellington_derekyang.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../PlantModels/wellington_derekyang.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlantModels/white_flower_kritigupta.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../PlantModels/white_flower_kritigupta.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +17,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Evaporate.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HandPositionSolver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PlaceARObjectOnHand.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ThrowObject.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

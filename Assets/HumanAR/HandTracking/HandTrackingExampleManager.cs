@@ -34,7 +34,7 @@ namespace Niantic.ARDKExamples
     private void Start()
     {
       _handTrackingManager.HandTrackingUpdated += OnHandTrackingUpdated;
-
+      /*
       // Setup for drawing rectangles and confidence
       if (_lineTexture == null)
       {
@@ -42,13 +42,13 @@ namespace Niantic.ARDKExamples
         _lineTexture.SetPixel(0, 0, LineColor);
         _lineTexture.Apply();
       }
-
+      
       if (_fontStyle == null)
       {
         _fontStyle = new GUIStyle();
         _fontStyle.fontSize = TextSize;
         _fontStyle.normal.textColor = TextColor;
-      }
+      }*/
     }
 
     private void OnDestroy()
@@ -67,7 +67,9 @@ namespace Niantic.ARDKExamples
       if (_detections != null)
       {
         foreach (var detection in _detections)
-        {
+        { 
+          
+          /*
           // Float rectangle to screen position
           var detectionPos = new Vector3(detection.Rect.x, detection.Rect.y, 0);
           var origin = Camera.main.ViewportToScreenPoint(detectionPos);
@@ -97,6 +99,7 @@ namespace Niantic.ARDKExamples
             "Score: " + score + "%",
             _fontStyle
           );
+          */
         }
       }
     }
